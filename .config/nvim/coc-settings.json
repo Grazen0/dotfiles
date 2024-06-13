@@ -1,0 +1,19 @@
+{
+	"suggest.removeDuplicateItems": true,
+	"suggest.noselect": true,
+	"coc.preferences.formatOnSave": true,
+	"prettier.semi": true,
+	"prettier.useTabs": true,
+	"prettier.endOfLine": "lf",
+	"prettier.printWidth": 80,
+	"prettier.singleQuote": true,
+	"prettier.trailingComma": "all",
+	"prettier.arrowParens": "always",
+	"prettier.tabWidth": 2,
+	"clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
+	"inlayHint.enable": false,
+	"Lua.workspace.library": ["/opt/nvim-linux64/share/nvim/runtime"]
+	"pyright.inlayHints.parameterTypes": false,
+	"pyright.inlayHints.variableTypes": false,
+	"pyright.inlayHints.functionReturnTypes": false
+}
