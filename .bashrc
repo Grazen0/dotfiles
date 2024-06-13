@@ -150,11 +150,16 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # autojump end
 
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+# bun end
+
+
 # My own stuff
 alias bat="batcat"
 alias fucking="sudo"
 alias python="python3.12"
-alias tetris="tetris-thefenriswolf.tetris"
 alias home="git --work-tree=$HOME --git-dir=$HOME/.home"
 alias ls="exa -l -h --icons --sort type"
 alias l="exa -l -h --icons --sort type"
@@ -173,23 +178,6 @@ PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux"
 MANPATH="$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man"
 INFOPATH="$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info"
 
-
-# Auto-backup
-function on_exit()
-{
-	trap "" SIGINT
-	home-backup
-}
-
-trap on_exit EXIT
-
-home pull > /dev/null # Sync with backup
+eval "$(oh-my-posh init bash --config ~/.config/theme.omp.json)"
 
 neofetch
-
-eval "$(oh-my-posh init bash --config ~/.config/theme.omp.json)"
-. "$HOME/.cargo/env"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
