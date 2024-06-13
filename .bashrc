@@ -157,6 +157,7 @@ export PATH=$BUN_INSTALL/bin:$PATH
 
 
 # My own stuff
+alias tetris=/snap/bin/tetris-thefenriswolf.tetris
 alias bat="batcat"
 alias fucking="sudo"
 alias python="python3.12"
@@ -173,7 +174,6 @@ PATH="$PATH:/home/jdgt/bin"
 PATH="$PATH:/opt/nvim-linux64/bin"
 PATH="$PATH:/usr/local/go/bin"
 PATH="$PATH:/home/jdgt/go/bin"
-PATH="$PATH:/home/jdgt/.bun/bin"
 PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux"
 MANPATH="$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man"
 INFOPATH="$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info"
