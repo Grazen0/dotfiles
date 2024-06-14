@@ -1,0 +1,15 @@
+[init]
+	defaultBranch = main
+[user]
+	email = josedanielgrayson@gmail.com
+	name = ElCholoGamer
+[pull]
+	rebase = false
+[credential]
+	helper = store
+[remote "origin"]
+	proxy = 
+[http]
+	sslVerify = false
+[core]
+	editor = nvim -f
