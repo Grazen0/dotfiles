@@ -12,7 +12,7 @@
 	"prettier.tabWidth": 2,
 	"clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
 	"inlayHint.enable": false,
-	"Lua.workspace.library": ["/opt/nvim-linux64/share/nvim/runtime"]
+	"Lua.workspace.library": ["/opt/nvim-linux64/share/nvim/runtime"],
 	"pyright.inlayHints.parameterTypes": false,
 	"pyright.inlayHints.variableTypes": false,
 	"pyright.inlayHints.functionReturnTypes": false
