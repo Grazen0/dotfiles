@@ -160,7 +160,7 @@ export PATH=$BUN_INSTALL/bin:$PATH
 alias tetris=/snap/bin/tetris-thefenriswolf.tetris
 alias bat="batcat"
 alias fucking="sudo"
-alias python="python3.12"
+alias python="python3"
 alias home="git --work-tree=$HOME --git-dir=$HOME/.home"
 alias ls="exa -l -h --icons --sort type"
 alias l="exa -l -h --icons --sort type"
@@ -182,3 +182,4 @@ eval "$(oh-my-posh init bash --config ~/.config/theme.omp.json)"
 
 neofetch
 
+. "$HOME/.cargo/env"

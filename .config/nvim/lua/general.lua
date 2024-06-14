@@ -35,4 +35,3 @@ vim.cmd([[
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<C-g>u
 ]])
 
-g.python3_host_prog = '/usr/bin/python3.12'
