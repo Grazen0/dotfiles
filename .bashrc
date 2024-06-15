@@ -124,7 +124,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # pnpm
-export PNPM_HOME="/home/jdgt/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -155,15 +155,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 # bun end
 
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-eval "$(pyenv virtualenv-init -)"
-# pyenv end
-
 # My own stuff
 alias tetris=/snap/bin/tetris-thefenriswolf.tetris
 alias bat="batcat"
@@ -176,11 +167,11 @@ alias lt="exa -l -h --icons --sort type --tree"
 alias lta="exa -l -h --icons --sort type --tree --all"
 alias ttd='tt -csv >> ~/.tt/wpm.csv'
 
-PATH="$PATH:/home/jdgt/.local/bin"
-PATH="$PATH:/home/jdgt/bin"
+PATH="$PATH:$HOME/.local/bin"
+PATH="$PATH:$HOME/bin"
 PATH="$PATH:/opt/nvim-linux64/bin"
 PATH="$PATH:/usr/local/go/bin"
-PATH="$PATH:/home/jdgt/go/bin"
+PATH="$PATH:$HOME/go/bin"
 PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux"
 MANPATH="$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man"
 INFOPATH="$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info"

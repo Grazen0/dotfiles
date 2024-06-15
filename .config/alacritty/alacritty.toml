@@ -2,11 +2,12 @@ live_config_reload = true
 
 [window]
 dimensions = { columns = 128, lines = 32 }
-opacity = 0.6
+opacity = 0.8
 blur = true
 
 [font]
 normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular" }
+size = 10
 
 [colors]
 

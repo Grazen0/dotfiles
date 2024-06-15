@@ -1,4 +1,5 @@
 return {
+	'fladson/vim-kitty',
 	{
 		'SirVer/ultisnips',
 		init = function()
