@@ -165,10 +165,8 @@ eval "$(pyenv virtualenv-init -)"
 
 
 # My own stuff
-alias tetris=/snap/bin/tetris-thefenriswolf.tetris
 alias bat="batcat"
 alias fucking="sudo"
-alias home="git --work-tree=$HOME --git-dir=$HOME/.home"
 alias ls="exa -l -h --icons --sort type"
 alias l="exa -l -h --icons --sort type"
 alias la="exa -l -h --icons --sort type --all"
