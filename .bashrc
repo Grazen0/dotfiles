@@ -183,7 +183,7 @@ PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux"
 MANPATH="$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man"
 INFOPATH="$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info"
 
-eval "$(oh-my-posh init bash --config ~/.config/theme.omp.json)"
+eval "$(oh-my-posh init bash --config $HOME/.config/theme.omp.json)"
 
 neofetch
 
