@@ -155,6 +155,15 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 # bun end
 
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+# pyenv end
+
+
 # My own stuff
 alias tetris=/snap/bin/tetris-thefenriswolf.tetris
 alias bat="batcat"
