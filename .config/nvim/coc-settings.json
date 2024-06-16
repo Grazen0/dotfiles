@@ -14,7 +14,7 @@
 	"inlayHint.enable": false,
 	"Lua.workspace.library": ["/opt/nvim-linux64/share/nvim/runtime"],
 	"python.venvPath": "~/.venv",
-	"python.pythonPath": "~/.venv/bin/python3.11",
+	"python.pythonPath": "~/.venv/bin/python",
 	"pyright.inlayHints.parameterTypes": false,
 	"pyright.inlayHints.variableTypes": false,
 	"pyright.inlayHints.functionReturnTypes": false
