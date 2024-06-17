@@ -187,4 +187,3 @@ eval "$(oh-my-posh init bash --config $HOME/.config/theme.omp.json)"
 
 neofetch
 
-. "$HOME/.cargo/env"
