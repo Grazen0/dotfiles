@@ -169,5 +169,9 @@ PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux"
 MANPATH="$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man"
 INFOPATH="$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info"
 
+# zsh-syntax-highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# zsh-syntax-highlighting end
+
 neofetch
 
