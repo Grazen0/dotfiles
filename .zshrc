@@ -128,11 +128,6 @@ fi
 # cargo end
 
 
-# brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# brew end
-
-
 # autojump
 [ -f /home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh ] && . /home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh
 # autojump end
@@ -152,7 +147,7 @@ eval "$(pyenv virtualenv-init -)"
 # pyenv end
 
 
-# My own stuff
+# Aliases
 alias bat="batcat"
 alias fucking="sudo"
 alias ls="exa -l -h --icons --sort type"
@@ -162,6 +157,7 @@ alias lt="exa -l -h --icons --sort type --tree"
 alias lta="exa -l -h --icons --sort type --tree --all"
 alias ttd='tt -csv >> ~/.tt/wpm.csv'
 
+# Paths
 PATH="$PATH:/opt/nvim-linux64/bin"
 PATH="$PATH:/usr/local/go/bin"
 PATH="$PATH:$HOME/go/bin"
