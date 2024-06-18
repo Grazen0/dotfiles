@@ -6,7 +6,7 @@
 super + Return
 	/home/jdgt/.local/bin/kitty
 
-q program launcher
+# q program launcher
 super + space
 	/usr/bin/dmenu_run
 
