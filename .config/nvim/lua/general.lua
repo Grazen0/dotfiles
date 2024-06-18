@@ -3,7 +3,7 @@ local o = vim.opt
 
 g.mapleader = ','
 
-g.python3_host_prog = '/home/jdgt/.venv/bin/python'
+vim.g.python3_host_prog = '/home/jdgt/.pyenv/versions/py3nvim/bin/python'
 
 o.encoding = 'utf-8'
 o.compatible = false
