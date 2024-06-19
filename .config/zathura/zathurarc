@@ -25,7 +25,7 @@ map J zoom out
 map i recolor
 map p print
 
-set font "JetBrainsMonoNL Nerd Font Mono 10"
+set font "JetBrainsMonoNL Nerd Font 10"
 
 set render-loading false
 set scroll-step 50

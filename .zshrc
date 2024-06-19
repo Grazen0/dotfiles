@@ -100,15 +100,18 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="mate $HOME/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# command-not-found
+source /etc/zsh_command_not_found
 
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# nvm end
 
 
 # pnpm
@@ -117,7 +120,6 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
 
 
 # cargo
@@ -125,12 +127,10 @@ CARGO_ENV="$HOME/.cargo/env"
 if [ -f $CARGO_ENV ]; then
 	. $CARGO_ENV
 fi
-# cargo end
 
 
 # autojump
 [ -f /home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh ] && . /home/linuxbrew/.linuxbrew/etc/profile.d/autojump.sh
-# autojump end
 
 
 # bun

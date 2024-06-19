@@ -6,7 +6,7 @@ opacity = 0.8
 blur = true
 
 [font]
-normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular" }
+normal = { family = "JetBrainsMonoNL Nerd Font", style = "Regular" }
 size = 10
 
 [colors]
