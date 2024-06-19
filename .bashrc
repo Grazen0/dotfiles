@@ -185,5 +185,5 @@ INFOPATH="$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info"
 
 eval "$(oh-my-posh init bash --config $HOME/.config/theme.omp.json)"
 
-neofetch
+fastfetch
 

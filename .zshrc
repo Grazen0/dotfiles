@@ -169,5 +169,5 @@ INFOPATH="$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info"
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # zsh-syntax-highlighting end
 
-neofetch
+fastfetch
 
