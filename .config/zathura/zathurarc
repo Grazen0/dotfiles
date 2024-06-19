@@ -1,8 +1,12 @@
-set guioptions v
+set guioptions "sv"
 
 set window-height 1024
 set window-width 1000
-set adjust-open width
+set adjust-open "best-fit"
+
+set scroll-page-aware "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
 
 set default-bg "#111111"
 set inputbar-bg "#111111"
@@ -29,3 +33,5 @@ set font "JetBrainsMonoNL Nerd Font 10"
 
 set render-loading false
 set scroll-step 50
+
+set database "sqlite"
