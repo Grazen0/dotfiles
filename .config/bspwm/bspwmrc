@@ -6,7 +6,7 @@ killall -q sxhkd
 sxhkd &>> $HOME/.config/sxhkd/.sxhkd.err &
 
 
-# Secondary monitor setup
+# # Secondary monitor setup
 secondary_monitor=$(xrandr --query | grep 'HDMI-1')
 
 if [[ $secondary_monitor = *connected* ]]; then
@@ -26,12 +26,15 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc config top_padding 0
+bspc config top_padding 1
 
-bspc rule -a Gimp desktop='^8'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+
+
+# nitrogen
+nitrogen --restore &
 
 
 # picom
@@ -43,7 +46,7 @@ picom --config $HOME/.config/picom/picom.conf &>> ~/.config/picom/.picom.err &
 killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
-polybar main &
+polybar main &>> .config/polybar/.polybar.err &
 
 if [[ $secondary_monitor = *connected* ]]; then
 	polybar secondary &

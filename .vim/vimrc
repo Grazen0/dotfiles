@@ -28,7 +28,7 @@ set laststatus=2
 set ttyfast
 set showmode
 
+let g:solarized_termcolors=256
 syntax enable
 set background=dark
 colorscheme solarized
-

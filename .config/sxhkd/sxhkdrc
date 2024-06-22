@@ -14,13 +14,25 @@ super + space
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# volume control
+# xf86 audio and brightness control
 XF86AudioRaiseVolume
     amixer -D pulse sset Master 5%+ unmute
 XF86AudioLowerVolume
     amixer -D pulse sset Master 5%- unmute
 XF86AudioMute
 	amixer -D pulse sset Master toggle
+XF86AudioPlay
+	playerctl play-pause
+XF86AudioNext
+	playerctl next
+XF86AudioPrev
+	playerctl previous
+XF86MonBrightness{Up,Down}  
+	brightnessctl s 10%{+,-}  
+
+# keyboard layout switching
+Shift_L + Alt_L
+    setxkbmap -query | grep -q 'latam' && setxkbmap us || setxkbmap latam,us
 
 #
 # bspwm hotkeys

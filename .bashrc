@@ -187,3 +187,4 @@ eval "$(oh-my-posh init bash --config $HOME/.config/theme.omp.json)"
 
 fastfetch
 
+. "$HOME/.cargo/env"
