@@ -10,6 +10,10 @@ super + Return
 super + space
 	rofi -show drun
 
+# emoji selector
+super + period
+	rofimoji --skin-tone neutral
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -17,22 +21,37 @@ super + Escape
 # xf86 audio and brightness control
 XF86AudioRaiseVolume
     amixer -D pulse sset Master 5%+ unmute
+
 XF86AudioLowerVolume
     amixer -D pulse sset Master 5%- unmute
+
 XF86AudioMute
 	amixer -D pulse sset Master toggle
+
 XF86AudioPlay
 	playerctl play-pause
+
 XF86AudioNext
 	playerctl next
+
 XF86AudioPrev
 	playerctl previous
+
 XF86MonBrightness{Up,Down}  
 	brightnessctl s 10%{+,-}  
 
 # keyboard layout switching
-Shift_L + Alt_L
+alt + Shift_L
     setxkbmap -query | grep -q 'latam' && setxkbmap us || setxkbmap latam,us
+
+# screen capture
+Print
+	maim --select | xclip -selection clipboard -t image/png
+
+shift + Print
+	mkdir -p $HOME/Pictures/Screenshots
+	maim --select >> $HOME/Pictures/Screenshots/$(date +%s).png
+
 
 #
 # bspwm hotkeys

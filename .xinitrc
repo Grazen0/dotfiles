@@ -5,6 +5,10 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
+export GTK_THEME=Adwaita:dark
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=Adwaita-Dark
+
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
@@ -24,7 +28,7 @@ if [ -f "$usermodmap" ]; then
 fi
 
 # start some nice programs
-
+#
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
   [ -x "$f" ] && . "$f"
@@ -33,5 +37,5 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 
-
 exec bspwm
+

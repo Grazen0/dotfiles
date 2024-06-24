@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
@@ -36,7 +36,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="dd/mm/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -124,18 +124,27 @@ alias lt="exa -l -h --icons --sort type --tree"
 alias lta="exa -l -h --icons --sort type --tree --all"
 
 # Paths
-PATH="$PATH:/opt/nvim-linux64/bin"
-PATH="$PATH:/usr/local/go/bin"
-PATH="$PATH:$HOME/go/bin"
-PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux"
-MANPATH="$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man"
-INFOPATH="$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info"
+export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux"
+export MANPATH="$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man"
+export INFOPATH="$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info"
 
 # zsh-syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # zsh-syntax-highlighting end
 
+
+# thefuck
+eval $(thefuck --alias)
+# thefuck end
+
+
+# ghcup
+[ -f "/home/jdgt/.ghcup/env" ] && . "/home/jdgt/.ghcup/env"
+# ghcup end
+
+
 fastfetch
 
-
-[ -f "/home/jdgt/.ghcup/env" ] && . "/home/jdgt/.ghcup/env" # ghcup-env
