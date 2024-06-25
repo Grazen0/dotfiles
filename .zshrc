@@ -2,6 +2,7 @@ export PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -29,13 +30,6 @@ ZSH_THEME="agnoster"
 # COMPLETION_WAITING_DOTS="true"
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
 HIST_STAMPS="dd/mm/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
