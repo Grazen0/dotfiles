@@ -33,6 +33,9 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
+bspc config remove_disabled_monitors      true
+bspc config merge_overlapping_monitors    true
+
 bspc config top_padding 1
 
 bspc rule -a mplayer2 state=floating
@@ -46,7 +49,8 @@ nitrogen --restore &
 
 
 # picom
-killall picom
+killall -q picom
+while pgrep -x picom >/dev/null; do sleep 1; done
 picom --config $HOME/.config/picom/picom.conf &>> $HOME/.config/picom/.picom.err &
 
 
