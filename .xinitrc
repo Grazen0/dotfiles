@@ -1,7 +1,8 @@
 #!/bin/sh
 
-userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
+userresources=$HOME/.config/X11/Xresources
+userlocalresources=$HOME/.config/X11/Xresources.local
+usermodmap=$HOME/.config/X11/Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
@@ -21,6 +22,10 @@ fi
 
 if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
+fi
+
+if [ -f $userlocalresources ]; then
+    xrdb -merge $userlocalresources
 fi
 
 if [ -f "$usermodmap" ]; then
