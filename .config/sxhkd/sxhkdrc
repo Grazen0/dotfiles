@@ -40,8 +40,8 @@ Print
 	maim --select | xclip -selection clipboard -t image/png
 
 shift + Print
-	mkdir -p $HOME/Pictures/Screenshots
-	maim --select >> $HOME/Pictures/Screenshots/$(date +%s).png
+	mkdir -p $HOME/Pictures/Screenshots \
+		&& maim --select >> $HOME/Pictures/Screenshots/$(date +%s).png
 
 
 #
