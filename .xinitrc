@@ -10,6 +10,8 @@ export GTK_THEME=Adwaita:dark
 export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 export QT_STYLE_OVERRIDE=Adwaita-Dark
 
+export XDG_SESSION_TYPE=X11
+
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
@@ -43,6 +45,9 @@ fi
 
 # disable ugly cursor cross
 xsetroot -cursor_name left_ptr
+
+# numlock by default
+numlockx &
 
 exec bspwm
 

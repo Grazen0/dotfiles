@@ -43,6 +43,9 @@ shift + Print
 	mkdir -p $HOME/Pictures/Screenshots \
 		&& maim --select >> $HOME/Pictures/Screenshots/$(date +%s).png
 
+# disable middle click paste
+~button2
+    ;echo -n | xclip -in
 
 #
 # bspwm hotkeys
