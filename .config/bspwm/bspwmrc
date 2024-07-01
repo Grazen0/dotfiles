@@ -75,19 +75,19 @@ if [[ "$1" = 0 ]]
 then
 	if command -v discord &> /dev/null
 	then
-		bspc rule -a discord focus=off follow=false -o
+		bspc rule -a discord focus=off follow=off -o
 		discord &
 	fi
 
 	if command -v whatsdesk &> /dev/null
 	then
-		bspc rule -a whatsdesk focus=off follow=false -o
+		bspc rule -a whatsdesk focus=off follow=off -o
 		whatsdesk &
 	fi
 
 	if command -v spotify-launcher &> /dev/null
 	then
-		bspc rule -a spotify-launcher focus=off follow=false -o
+		bspc rule -a Spotify focus=off follow=off -o
 		spotify-launcher &
 	fi
 fi
