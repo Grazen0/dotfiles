@@ -6,6 +6,10 @@
 super + Return
 	kitty
 
+# terminal emulator (floating)
+super + shift + Return
+	bspc rule -a kitty state=floating -o && kitty
+
 # q program launcher
 super + space
 	rofi -show drun

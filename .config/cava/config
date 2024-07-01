@@ -216,7 +216,7 @@ source = auto
 
 # SDL and sdl_glsl only support hex code colors, these are the default:
 ; background = '#111111'
-foreground = '#dcd7ba'
+foreground = '#e6c384'
 
 
 # Gradient mode, only hex defined colors are supported,
