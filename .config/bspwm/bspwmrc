@@ -36,6 +36,7 @@ bspc config merge_overlapping_monitors    true
 bspc wm -O eDP-1 HDMI-1
 
 bspc rule -a LibreWolf desktop=^2 private=on focus=on
+bspc rule -a whatsdesk desktop=^6 private=on
 bspc rule -a discord desktop=^7 private=on
 bspc rule -a Spotify desktop=^10 private=on
 
@@ -76,6 +77,12 @@ then
 	then
 		bspc rule -a discord focus=off follow=false -o
 		discord &
+	fi
+
+	if command -v whatsdesk &> /dev/null
+	then
+		bspc rule -a whatsdesk focus=off follow=false -o
+		whatsdesk &
 	fi
 
 	if command -v spotify-launcher &> /dev/null
