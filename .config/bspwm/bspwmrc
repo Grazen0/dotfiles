@@ -42,6 +42,7 @@ bspc rule -a Spotify desktop=^10 private=on
 
 bspc rule -a Blueman-manager state=floating
 bspc rule -a Nm-connection-editor state=floating
+bspc rule -a Pcmanfm state=floating
 
 
 # nitrogen
