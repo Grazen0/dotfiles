@@ -4,18 +4,28 @@ set window-height 1024
 set window-width 1000
 set adjust-open "best-fit"
 
-set scroll-page-aware "true"
 set scroll-full-overlap 0.01
 set scroll-step 100
 
-set default-bg "#111111"
-set inputbar-bg "#111111"
-set completion-bg "#111111"
-set statusbar-bg "#111111"
+set default-fg                "#dcd7ba"
+set default-bg                "#16161d"
+set inputbar-bg               "#16161d"
+set completion-bg             "#16161d"
+set statusbar-bg              "#16161d"
+set statusbar-fg              "#dcd7ba"
+set inputbar-fg               "#dcd7ba"
+set completion-group-bg       "#16161d"
+set completion-highlight-bg   "#7fb4ca"
+set notification-warning-bg   "#c0a36e"
+set notification-warning-fg   "#16161d"
+set notification-error-bg     "#c34043"
+set notification-error-fg     "#dcd7ba"
 
 set recolor true
 set recolor-keephue true
-set recolor-lightcolor "#222222"
+set recolor-reverse-video true
+set recolor-lightcolor "#1f1f28"
+set recolor-darkcolor  "#dcd7ba"
 
 map j feedkeys "<C-Down>"
 map k feedkeys "<C-Up>"
@@ -35,3 +45,4 @@ set render-loading false
 set scroll-step 50
 
 set database "sqlite"
+
