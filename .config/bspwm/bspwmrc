@@ -81,6 +81,11 @@ killall -q greenclip
 greenclip daemon &
 
 
+# nm-applet
+killall -q nm-applet
+nm-applet &
+
+
 # Startup programs
 if [[ "$1" = 0 ]]
 then
