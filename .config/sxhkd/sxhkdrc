@@ -2,6 +2,10 @@
 # wm independent hotkeys
 #
 
+# power menu
+super + x
+	rofi -show power-menu -modi power-menu:rofi-power-menu
+
 # terminal emulator
 super + Return
 	kitty
