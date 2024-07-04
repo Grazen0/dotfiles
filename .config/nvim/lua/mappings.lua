@@ -15,3 +15,6 @@ keyset('n', '<C-l>', '<C-W>l', opts)
 
 keyset('n', '<Tab>', 'gt', opts)
 keyset('n', '<S-Tab>', 'gT', opts)
+
+-- LaTeX spell correction
+keyset('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<C-g>u', opts)

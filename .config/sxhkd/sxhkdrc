@@ -18,6 +18,10 @@ super + space
 super + shift + period
 	rofimoji --skin-tone neutral
 
+# clipboard history
+super + v
+	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd

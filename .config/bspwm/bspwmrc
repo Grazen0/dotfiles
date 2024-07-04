@@ -35,14 +35,19 @@ bspc config merge_overlapping_monitors    true
 
 bspc wm -O eDP-1 HDMI-1
 
+# Some apps should open on a specific desktop
 bspc rule -a LibreWolf desktop=^2 private=on focus=on
+bspc rule -a obsidian desktop=^3 private=on focus=on
 bspc rule -a whatsdesk desktop=^6 private=on
 bspc rule -a discord desktop=^7 private=on
 bspc rule -a Spotify desktop=^10 private=on
 
+# Floating stuff
 bspc rule -a Blueman-manager state=floating
 bspc rule -a Nm-connection-editor state=floating
 bspc rule -a Pcmanfm state=floating
+bspc rule -a zoom state=floating
+bspc rule -a Nvidia-settings state=floating
 
 
 # nitrogen
@@ -71,24 +76,22 @@ killall -q lxqt-policykit-agent
 lxqt-policykit-agent &
 
 
+# greenclip
+killall -q greenclip
+greenclip daemon &
+
+
 # Startup programs
 if [[ "$1" = 0 ]]
 then
 	if command -v discord &> /dev/null
 	then
-		bspc rule -a discord focus=off follow=off -o
-		discord &
+		discord --start-minimized &
 	fi
 
 	if command -v whatsdesk &> /dev/null
 	then
 		bspc rule -a whatsdesk focus=off follow=off -o
 		whatsdesk &
-	fi
-
-	if command -v spotify-launcher &> /dev/null
-	then
-		bspc rule -a Spotify focus=off follow=off -o
-		spotify-launcher &
 	fi
 fi

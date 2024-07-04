@@ -191,6 +191,16 @@ M.config = function()
 	keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 	-- Resume latest coc list
 	keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+
+
+	-- coc-snippets config
+	-- Use <C-l> for trigger snippet expand.
+	keyset("i", "<C-l>", "<Plug>(coc-snippets-expand)")
+	-- Use <C-j> for select text for visual placeholder of snippet.
+	keyset("v", "<C-j>", "<Plug>(coc-snippets-select)")
+
+	vim.g.coc_snippet_next = '<Tab>'
+	vim.g.coc_snippet_prev = '<S-Tab>'
 end
 
 -- Global extensions
@@ -198,6 +208,7 @@ vim.g.coc_global_extensions = {
 	'coc-pairs',
 	'coc-json',
 	'coc-git',
+	'coc-snippets',
 }
 
 return M

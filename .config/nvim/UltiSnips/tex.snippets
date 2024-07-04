@@ -13,29 +13,20 @@ endglobal
 
 
 snippet template "Basic template" b
-\documentclass[a4paper]{article}
+\documentclass[12pt, a4paper]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage[dutch]{babel}
+\usepackage[spanish]{babel}
 \usepackage{amsmath, amssymb}
+\usepackage{amssymb}
+\usepackage
 
-
-% figure support
-\usepackage{import}
-\usepackage{xifthen}
-\pdfminorversion=7
-\usepackage{pdfpages}
-\usepackage{transparent}
-\newcommand{\incfig}[1]{%
-	\def\svgwidth{\columnwidth}
-	\import{./figures/}{#1.pdf_tex}
-}
-
-\pdfsuppresswarningpagegroup=1
+\title{Unnamed document}
+\author{José Grayson}
+\date{\today}
 
 \begin{document}
+\maketitle
 
 $0
 
@@ -312,7 +303,7 @@ endsnippet
 
 context "math()"
 snippet rd "to the ... power" iA
-^{($1)}$0
+^{$1}$0
 endsnippet
 
 snippet __ "subscript" iA

@@ -2,14 +2,6 @@ return {
 	'fladson/vim-kitty',
 	'baskerville/vim-sxhkdrc',
 	{
-		'SirVer/ultisnips',
-		init = function()
-			vim.g.UltiSnipsExpandTrigger = '<Nop>'
-			vim.g.UltiSnipsJumpForwardTrigger = '<Nop>'
-			vim.g.UltiSnipsJumpBackwardTrigger = '<Nop>'
-		end,
-	},
-	{
 		'KeitaNakamura/tex-conceal.vim',
 		init = function()
 			vim.opt.conceallevel = 1

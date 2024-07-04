@@ -3,13 +3,13 @@ local o = vim.opt
 
 g.mapleader = ','
 
-vim.g.python3_host_prog = '/home/jdgt/.pyenv/versions/py3nvim/bin/python'
+g.python3_host_prog = '/home/jdgt/.pyenv/versions/py3nvim/bin/python'
 
 o.encoding = 'utf-8'
 o.compatible = false
 
 vim.cmd('filetype plugin indent on')
-vim.cmd 'set clipboard+=unnamedplus'
+vim.cmd('set clipboard+=unnamedplus')
 
 o.autoindent = true
 o.expandtab = false
@@ -27,13 +27,9 @@ o.wildmode = 'longest,list'
 o.colorcolumn = '80'
 o.mouse = 'a'
 o.cursorline = true
-o.ttyfast = true
-o.termguicolors = true
+-- o.ttyfast = true
+-- o.termguicolors = true
 
 o.showmatch = false
 
 o.spelllang = { 'en_us', 'es_es' }
-vim.cmd([[
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<C-g>u
-]])
-

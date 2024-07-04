@@ -34,9 +34,4 @@ require('lazy').setup('plugins', {
 	},
 })
 
---[[
-"	Plug 'SirVer/ultisnips'
-"	Plug 'honza/vim-snippets'
-]]
-
 require('mappings')
