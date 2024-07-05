@@ -4,7 +4,7 @@
 
 # power menu
 super + x
-	rofi -show power-menu -modi power-menu:rofi-power-menu
+	rofi -show menu -modi "menu:rofi-power-menu --choices=shutdown/reboot/suspend/logout/lockscreen"
 
 # terminal emulator
 super + Return
