@@ -98,6 +98,7 @@ fi
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+[ -s "/home/jdgt/.bun/_bun" ] && source "/home/jdgt/.bun/_bun"
 # bun end
 
 
