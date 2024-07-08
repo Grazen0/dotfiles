@@ -6,9 +6,9 @@ usermodmap=$HOME/.config/X11/Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-export GTK_THEME=Adwaita:dark
-export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
-export QT_STYLE_OVERRIDE=Adwaita-Dark
+export GTK_THEME=Kanagawa-Borderless
+export GTK2_RC_FILES=/usr/share/themes/Kanagawa-Borderless/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=Kanagawa-Borderless
 
 export XDG_SESSION_TYPE=X11
 
