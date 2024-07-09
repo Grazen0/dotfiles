@@ -119,6 +119,13 @@ alias lt="exa -l -h --icons --sort type --tree"
 alias lta="exa -l -h --icons --sort type --tree --all"
 alias peaclock="peaclock --config-dir $HOME/.config/peaclock"
 
+
+# rmtrash aliases
+alias rm="rmtrash"
+alias rmdir="rmdirtrash"
+alias sudo="sudo " # necessary for some reason
+
+
 # Paths
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:/usr/local/go/bin"
@@ -152,6 +159,8 @@ ranger_cd() {
     rm -f -- "$temp_file"
 }
 # ranger end
+
+
 
 
 fastfetch
