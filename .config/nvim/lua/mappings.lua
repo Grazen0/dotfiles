@@ -16,5 +16,11 @@ keyset('n', '<C-l>', '<C-W>l', opts)
 keyset('n', '<Tab>', 'gt', opts)
 keyset('n', '<S-Tab>', 'gT', opts)
 
+-- Soft line wrap movement
+vim.cmd([[
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+]])
+
 -- LaTeX spell correction
 keyset('i', '<C-l>', '<c-g>u<Esc>[s1z=`]a<C-g>u', opts)

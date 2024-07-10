@@ -23,6 +23,7 @@ o.ignorecase = true
 o.hlsearch = true
 o.incsearch = true
 o.number = true
+o.relativenumber = true
 o.wildmode = 'longest,list'
 o.colorcolumn = '80'
 o.mouse = 'a'
