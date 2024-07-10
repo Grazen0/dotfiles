@@ -4,7 +4,7 @@ configuration {
 	display-drun: "";
 	drun-display-format: "{name}";
 	hide-scrollbar: true;
-	m: 1;
+	m: -4;
 }
 
 * {
