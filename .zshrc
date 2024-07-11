@@ -117,7 +117,10 @@ alias l="exa -l -h --icons --sort type"
 alias la="exa -l -h --icons --sort type --all"
 alias lt="exa -l -h --icons --sort type --tree"
 alias lta="exa -l -h --icons --sort type --tree --all"
+
 alias peaclock="peaclock --config-dir $HOME/.config/peaclock"
+
+alias sd="cd ~ && cd \$(fzf --walker=dir,hidden)"
 
 
 # rmtrash aliases
