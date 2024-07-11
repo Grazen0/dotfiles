@@ -1,7 +1,7 @@
 export PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="agnoster"
+ZSH_THEME="aphrodite/aphrodite" # set by `omz`
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -164,7 +164,15 @@ ranger_cd() {
 # ranger end
 
 
+# bat 
+export BAT_THEME="kanagawa"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}
+# bat end
 
 fastfetch
 
