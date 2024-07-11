@@ -1,28 +1,36 @@
 return {
 	'kyazdani42/nvim-tree.lua',
-	config = function()
-		require('nvim-tree').setup({
-			view = {
-				width = 30,
-				side = 'left'
-			},
-			renderer = {
-				group_empty = true,
-			},
-			-- filters = { enable = false },
-			update_focused_file = {
+	opts = {
+
+		view = {
+			width = 30,
+			side = 'left'
+		},
+		filters = {
+			custom = { '^.git$' },
+			git_ignored = false,
+		},
+		update_focused_file = {
+			enable = true,
+		},
+		-- actions = { open_file = { quit_on_open = true } },
+		renderer = {
+			highlight_git = 'name',
+			indent_markers = {
 				enable = true,
 			},
-			-- actions = { open_file = { quit_on_open = true } },
-			renderer = {
-				indent_markers = {
-					enable = true,
-				},
-			},
-		})
+			icons = {
+				show = {
+					folder_arrow = false,
+				}
+			}
+		},
+	},
+	config = function(_, opts)
+		require('nvim-tree').setup(opts)
 
-		local opts = { noremap = true, silent = true }
+		local key_opts = { noremap = true, silent = true }
 
-		vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<cr>', opts)
+		vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<cr>', key_opts)
 	end,
 }
