@@ -32,5 +32,6 @@ o.cursorline = true
 -- o.termguicolors = true
 
 o.showmatch = false
-
 o.spelllang = { 'en_us', 'es_es' }
+
+o.undofile = true
