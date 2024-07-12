@@ -1,3 +1,4 @@
+# Important PATHs
 export PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 export ZSH="$HOME/.oh-my-zsh"
@@ -8,17 +9,23 @@ ZSH_THEME="aphrodite/aphrodite"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
+	zsh-autopair
+	zsh-syntax-highlighting
+	zsh-interactive-cd
+	zsh-autosuggestions
 	git
 	virtualenv
-	zsh-autopair
-	zsh-interactive-cd
 	sudo
 	command-not-found
 	fzf
 	nvm
 )
 
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+
 source $ZSH/oh-my-zsh.sh
+
+bindkey '^ ' autosuggest-accept
 
 
 # Some global settings
@@ -44,7 +51,7 @@ fi
 
 # Bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
+export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "/home/jdgt/.bun/_bun" ] && source "/home/jdgt/.bun/_bun"
 
 
@@ -85,11 +92,6 @@ batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
-
-# Extra ZSH plugins
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^ ' autosuggest-accept
 
 albafetch
 
