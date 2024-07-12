@@ -4,7 +4,7 @@ return {
 
 		view = {
 			width = 30,
-			side = 'left'
+			side = 'left',
 		},
 		filters = {
 			custom = { '^.git$' },
@@ -22,8 +22,8 @@ return {
 			icons = {
 				show = {
 					folder_arrow = false,
-				}
-			}
+				},
+			},
 		},
 	},
 	config = function(_, opts)

@@ -5,7 +5,7 @@ return {
 			theme = {
 				all = {
 					ui = {
-						bg_gutter = "none",
+						bg_gutter = 'none',
 					},
 				},
 			},
@@ -21,7 +21,7 @@ return {
 				TelescopeTitle = { fg = theme.ui.special, bold = true },
 
 				Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
-				PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+				PmenuSel = { fg = 'NONE', bg = theme.ui.bg_p2 },
 				PmenuSbar = { bg = theme.ui.bg_m1 },
 				PmenuThumb = { bg = theme.ui.bg_p2 },
 			}

@@ -22,7 +22,7 @@ return {
 				color = '#6d8086',
 				cterm_color = '66',
 				name = 'Inc',
-			}
+			},
 		},
 	},
 }
