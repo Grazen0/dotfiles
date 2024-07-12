@@ -10,6 +10,9 @@ HIST_STAMPS="dd/mm/yyyy"
 plugins=(
 	git
 	virtualenv
+	zsh-autopair
+	zsh-interactive-cd
+	sudo
 	command-not-found
 	fzf
 	nvm
@@ -83,11 +86,9 @@ batdiff() {
 }
 
 
-
-
-# zsh-syntax-highlighting
+# Extra ZSH plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 fastfetch
 
