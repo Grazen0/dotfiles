@@ -2,7 +2,7 @@ return {
 	'nvim-telescope/telescope.nvim',
 	branch = '0.1.x',
 	dependencies = { 'nvim-lua/plenary.nvim' },
-	config = function(_, opts)
+	config = function()
 		local actions = require('telescope.actions')
 
 		require('telescope').setup({
@@ -19,6 +19,7 @@ return {
 				},
 			},
 		})
+
 		local builtin = require('telescope.builtin')
 
 		vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
