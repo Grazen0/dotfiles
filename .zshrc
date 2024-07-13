@@ -6,6 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # OMZ stuff
 ZSH_THEME="aphrodite/aphrodite"
+ZSH_CUSTOM="$HOME/.omz-custom"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
