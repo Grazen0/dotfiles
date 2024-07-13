@@ -10,13 +10,13 @@ ZSH_CUSTOM="$HOME/.omz-custom"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
-    zsh-autopair
-    zsh-syntax-highlighting
-    zsh-interactive-cd
     zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-vim-mode
+    zsh-autopair
+    zsh-interactive-cd
     git
     virtualenv
-    sudo
     command-not-found
     fzf
     nvm
