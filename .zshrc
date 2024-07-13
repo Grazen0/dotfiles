@@ -10,16 +10,16 @@ ZSH_CUSTOM="$HOME/.omz-custom"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd/mm/yyyy"
 plugins=(
-	zsh-autopair
-	zsh-syntax-highlighting
-	zsh-interactive-cd
-	zsh-autosuggestions
-	git
-	virtualenv
-	sudo
-	command-not-found
-	fzf
-	nvm
+    zsh-autopair
+    zsh-syntax-highlighting
+    zsh-interactive-cd
+    zsh-autosuggestions
+    git
+    virtualenv
+    sudo
+    command-not-found
+    fzf
+    nvm
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -39,15 +39,15 @@ export PRETTIERD_DEFAULT_CONFIG="$HOME/.config/prettierd.json"
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
 
 # Cargo
 CARGO_ENV="$HOME/.cargo/env"
 if [ -f $CARGO_ENV ]; then
-	. $CARGO_ENV
+    . $CARGO_ENV
 fi
 
 
@@ -85,7 +85,7 @@ ranger_cd() {
 }
 
 
-# bat 
+# bat
 export BAT_THEME="kanagawa"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
