@@ -18,8 +18,6 @@ snippet template "Basic template" b
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{amsmath, amssymb}
-\usepackage{amssymb}
-\usepackage
 
 \title{Unnamed document}
 \author{José Grayson}
@@ -634,11 +632,5 @@ snippet DD "D" iA
 \mathbb{D}
 endsnippet
 
-snippet box "Box"
-`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
-│ $1 │
-`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
-$0
-endsnippet
-
 # vim:ft=snippets
+
