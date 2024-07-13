@@ -8,13 +8,13 @@ return {
 	opts = {
 		format_on_save = format_opts,
 		formatters_by_ft = {
-			javascriptreact = { 'prettierd' },
-			typescriptreact = { 'prettierd' },
-			javascript = { 'prettierd' },
-			typescript = { 'prettierd' },
-			graphql = { 'prettierd' },
-			json = { 'prettierd' },
-			css = { 'prettierd' },
+			javascriptreact = { { 'prettierd', 'prettier' } },
+			typescriptreact = { { 'prettierd', 'prettier' } },
+			javascript = { { 'prettierd', 'prettier' } },
+			typescript = { { 'prettierd', 'prettier' } },
+			graphql = { { 'prettierd', 'prettier' } },
+			json = { { 'prettierd', 'prettier' } },
+			css = { { 'prettierd', 'prettier' } },
 			python = { 'isort', 'black' },
 			lua = { 'stylua' },
 			rust = { 'rustfmt' },
@@ -23,11 +23,20 @@ return {
 			c = { 'clang-format' },
 			cpp = { 'clang-format' },
 			yaml = { 'prettierd' },
+			sh = { 'beautysh' },
+			bash = { 'beautysh' },
 		},
 	},
 	config = function(_, opts)
 		local conform = require('conform')
 		conform.setup(opts)
+
+		conform.formatters.latexindent = {
+			prepend_args = {
+				'-c',
+				'/home/jdgt/.config/nvim',
+			},
+		}
 
 		vim.api.nvim_create_user_command('Format', function()
 			conform.format(format_opts)
