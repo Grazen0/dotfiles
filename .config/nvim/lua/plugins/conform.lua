@@ -25,6 +25,7 @@ return {
 			yaml = { 'prettierd' },
 			sh = { 'beautysh' },
 			bash = { 'beautysh' },
+			zsh = { 'beautysh' },
 		},
 	},
 	config = function(_, opts)
