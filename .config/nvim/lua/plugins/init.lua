@@ -1,5 +1,25 @@
 return {
 	{
+		'williamboman/mason-lspconfig.nvim',
+		opts = {
+			ensure_installed = {
+				'lua_ls',
+				'jsonls',
+				'clangd',
+				'pyright',
+				'texlab',
+				'tsserver',
+				'rust_analyzer',
+			},
+		},
+		config = true,
+	},
+	{
+		'williamboman/mason.nvim',
+		dependencies = { 'williamboman/mason-lspconfig.nvim' },
+		config = true,
+	},
+	{
 		'windwp/nvim-autopairs',
 		event = 'InsertEnter',
 		config = true,
