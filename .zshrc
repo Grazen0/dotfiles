@@ -12,7 +12,6 @@ HIST_STAMPS="dd/mm/yyyy"
 plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
-    zsh-vim-mode
     zsh-autopair
     zsh-interactive-cd
     git
