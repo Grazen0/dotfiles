@@ -1,7 +1,7 @@
 [Default Applications]
-x-scheme-handler/webcal=brave-browser.desktop
+x-scheme-handler/webcal=librewolf.desktop
 x-scheme-handler/http=librewolf.desktop
 x-scheme-handler/https=librewolf.desktop
 application/pdf=org.pwmt.zathura.desktop
-image/png=sxiv.desktop
-image/jpeg=sxiv.desktop
+image/png=nsxiv.desktop
+image/jpeg=nsxiv.desktop
