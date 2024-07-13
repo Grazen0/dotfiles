@@ -1,1 +1,1 @@
-vim.cmd ':set filetype=asm'
+vim.cmd(':set filetype=asm')
