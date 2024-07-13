@@ -32,6 +32,7 @@ bindkey '^ ' autosuggest-accept
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
 export EDITOR='nvim'
+export PRETTIERD_DEFAULT_CONFIG="$HOME/.config/prettierd.json"
 
 
 # pnpm
