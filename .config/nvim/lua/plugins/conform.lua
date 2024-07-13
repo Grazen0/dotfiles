@@ -17,6 +17,12 @@ return {
 			css = { 'prettierd' },
 			python = { 'isort', 'black' },
 			lua = { 'stylua' },
+			rust = { 'rustfmt' },
+			tex = { 'latexindent' },
+			latex = { 'latexindent' },
+			c = { 'clang-format' },
+			cpp = { 'clang-format' },
+			yaml = { 'prettierd' },
 		},
 	},
 	config = function(_, opts)
