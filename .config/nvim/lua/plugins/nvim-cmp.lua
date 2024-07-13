@@ -194,6 +194,7 @@ return {
 		})
 
 		cmp.setup.cmdline({ '/', '?' }, {
+			completion = { autocomplete = false },
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = {
 				{ name = 'buffer' },
