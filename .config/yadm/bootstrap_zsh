@@ -1,0 +1,62 @@
+#!/bin/zsh
+
+echo "Sourcing ~/.zshrc"
+source $HOME/.zshrc
+echo ""
+
+echo "Checking for Oh My Zsh"
+if ! command -v omz >/dev/null 2>&1; then
+    echo "Installing Oh My Zsh"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+echo ""
+
+echo "Checking for nvm"
+if ! command -v nvm &>/dev/null; then
+    echo "Installing nvm"
+    PROFILE=/dev/null bash -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
+fi
+echo ""
+
+python_version="3.12.4"
+
+echo "Checking for Pyenv"
+if ! command -v pyenv &>/dev/null; then
+    echo "Installing Pyenv"
+    curl https://pyenv.run | bash
+fi
+echo ""
+
+echo "Checking for Python $python_version"
+if ! pyenv versions | grep "$python_version" &>/dev/null; then
+    pyenv install $python_version
+    pyenv global $python_version
+fi
+echo ""
+
+echo "Checking for py3nvim virtual environment"
+if ! pyenv virtualenvs | grep -w py3nvim &>/dev/null; then
+    echo "Creating py3nvim environment"
+    pyenv virtualenv py3nvim
+    pyenv activate py3nvim
+    pip install
+    pyenv deactivate
+fi
+echo ""
+
+echo "Checking for Rust compiler"
+if ! command -v rustc &>/dev/null; then
+    echo "Installing Rust"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+echo ""
+
+echo "Checking for rust-analyzer"
+if ! rustup component list --installed | grep "rust-analyzer" &>/dev/null; then
+    echo "Installing rust-analyzer"
+    rustup component add rust-analyzer
+fi
+echo ""
+
+echo "Bootstrap done"
+

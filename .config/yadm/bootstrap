@@ -1,0 +1,49 @@
+#!/bin/sh
+
+PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+cd "$HOME"
+
+echo "==========================="
+echo "      YADM BOOTSTRAP       "
+echo "==========================="
+echo ""
+
+echo "Initializing submodules"
+yadm submodule update --recursive --init
+echo ""
+
+
+echo "Refreshing pacman database"
+sudo pacman -Sy
+echo ""
+
+echo "Installing needed pacman packages"
+sudo pacman --needed -S $(cat $HOME/.config/yadm/pacman_pkglist)
+echo ""
+
+echo "Syncing pkgfile database"
+pkgfile -u
+
+echo "Checking for Yay"
+if ! command -v yay &>/dev/null; then
+    echo "Installing Yay"
+    sudo pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay-bin.git
+    cd yay-bin
+    makepkg -si
+fi
+echo ""
+
+echo "Refreshing Yay database"
+yay -Sy
+
+echo "Installing needed Yay packages"
+yay --needed -S $(cat $HOME/.config/yadm/yay_pkglist)
+echo ""
+
+zsh "$HOME/.config/yadm/post_pacman"
+
