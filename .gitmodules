@@ -1,12 +1,15 @@
-[submodule ".zsh/themes/aphrodite"]
-	path = .zsh/themes/aphrodite
-	url = https://github.com/win0err/aphrodite-terminal-theme
-[submodule ".zsh/plugins/zsh-autopair"]
-	path = .zsh/plugins/zsh-autopair
-	url = https://github.com/hlissner/zsh-autopair
-[submodule ".zsh/plugins/zsh-completions"]
-	path = .zsh/plugins/zsh-completions
+[submodule ".config/zsh/plugins/zsh-autosuggestions"]
+	path = .config/zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions/
+[submodule ".config/zsh/plugins/zsh-completions"]
+	path = .config/zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
-[submodule ".zsh/plugins/zsh-autosuggestions"]
-	path = .zsh/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".config/zsh/plugins/zsh-autopair"]
+	path = .config/zsh/plugins/zsh-autopair
+	url = https://github.com/hlissner/zsh-autopair
+[submodule ".config/zsh/plugins/zsh-syntax-highlighting"]
+	path = .config/zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule ".config/zsh/themes/aphrodite"]
+	path = .config/zsh/themes/aphrodite
+	url = https://github.com/win0err/aphrodite-terminal-theme
