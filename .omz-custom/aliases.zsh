@@ -6,8 +6,8 @@ alias va='source ./.venv/bin/activate'
 # ls -> exa
 alias ls="exa --color=auto"
 alias la="ls -A"
-alias ll="ls -lhF --icons"
-alias lla="ll -A"
+alias ll="ls -lhF --sort=type --icons"
+alias lla="ll -A --sort=type --icons"
 alias l="ls -F"
 
 alias lt="ls -T"
