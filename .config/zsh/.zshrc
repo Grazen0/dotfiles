@@ -11,7 +11,6 @@ export ARCHFLAGS="-arch x86_64"
 export PRETTIERD_DEFAULT_CONFIG="$XDG_CONFIG_HOME/prettierd.json"
 
 
-
 # ================================
 # Program environments
 # ================================
@@ -115,8 +114,6 @@ alias sudo="sudo " # necessary for some reason
 # Zsh environment
 # ================================
 
-ZSH=
-
 source "$ZDOTDIR/themes/aphrodite/aphrodite.zsh-theme"
 
 source "$ZDOTDIR/plugins/zsh-autopair/autopair.zsh"
@@ -131,12 +128,14 @@ autoload -U compinit; compinit
 
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+
 # ================================
 # Zsh Vi mode
 # ================================
 #
 bindkey -v
 export KEYTIMEOUT=1
+source "$ZDOTDIR/plugins/cursor_mode"
 
 # For some reason these aren't defaults
 bindkey "^H" backward-delete-char
@@ -183,32 +182,6 @@ bindkey -M vicmd cs change-surround
 bindkey -M vicmd ds delete-surround
 bindkey -M vicmd ys add-surround
 bindkey -M visual S add-surround
-
-# Vi cursor
-cursor_mode() {
-    cursor_block="\e[2 q"
-    cursor_beam="\e[6 q"
-
-    function zle-keymap-select {
-        if [[ ${KEYMAP} == vicmd ]] || [[ $1 = "block" ]]; then
-            echo -ne $cursor_block
-        elif [[ ${KEYMAP} == main ]] ||
-        [[ ${KEYMAP} == viins ]] ||
-        [[ ${KEYMAP} = "" ]] ||
-        [[ $1 = "beam" ]]; then
-            echo -ne $cursor_beam
-        fi
-    }
-
-    zle-line-init() {
-        echo -ne $cursor_beam
-    }
-
-    zle -N zle-keymap-select
-    zle -N zle-line-init
-}
-
-cursor_mode
 
 
 albafetch
