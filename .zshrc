@@ -1,39 +1,20 @@
-# Important PATHs
 export PATH="/usr/local/bin:$HOME/bin:$HOME/.local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
-export ZSH="$HOME/.oh-my-zsh"
 
 
-# OMZ stuff
-ZSH_THEME="aphrodite/aphrodite"
-ZSH_CUSTOM="$HOME/.omz-custom"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-HIST_STAMPS="dd/mm/yyyy"
-plugins=(
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-autopair
-    zsh-interactive-cd
-    git
-    virtualenv
-    command-not-found
-    fzf
-    nvm
-)
+# ================================
+# Global settings
+# ================================
 
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
-source $ZSH/oh-my-zsh.sh
-
-bindkey '^ ' autosuggest-accept
-
-
-# Some global settings
 export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch x86_64"
 export EDITOR='nvim'
 export PRETTIERD_DEFAULT_CONFIG="$HOME/.config/prettierd.json"
 
+
+# ================================
+# Program environments
+# ================================
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -93,6 +74,59 @@ batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
+
+# ================================
+# Aliases
+# ================================
+
+# Python virtualenv aliases
+alias ve='python3 -m venv ./.venv'
+alias va='source ./.venv/bin/activate'
+
+
+# ls -> exa
+alias ls="exa --color=auto"
+alias la="ls -A"
+alias ll="ls -lhF --sort=type --icons"
+alias lla="ll -A --sort=type --icons"
+alias l="ls -F"
+alias lt="ls -T"
+alias lta="lt -A"
+
+# Peaclock with config
+alias peaclock="peaclock --config-dir $HOME/.config/peaclock"
+
+# Fuzzy cd
+alias sd="cd ~ && cd \$(fzf --walker=dir,hidden)"
+
+
+# rmtrash aliases
+alias rm="rmtrash"
+alias rmdir="rmdirtrash"
+alias sudo="sudo " # necessary for some reason
+
+
+# ================================
+# Zsh environment
+# ================================
+
+source "$HOME/.zsh/themes/aphrodite/aphrodite.zsh-theme"
+source "$HOME/.zsh/plugins/zsh-autopair/autopair.zsh"
+source "$HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+autopair-init
+fpath+="$HOME/.zsh/plugins/zsh-completions/src"
+bindkey '^ ' autosuggest-accept
+
+source "$HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+# Better command navigation
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+bindkey  "^[[3~" delete-char
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey -v
 
 albafetch
 

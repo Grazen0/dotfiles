@@ -1,15 +1,12 @@
-[submodule ".omz-custom/plugins/zsh-autopair"]
-	path = .omz-custom/plugins/zsh-autopair
-	url = https://github.com/hlissner/zsh-autopair
-[submodule ".omz-custom/plugins/zsh-autosuggestions"]
-	path = .omz-custom/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions/
-[submodule ".omz-custom/plugins/zsh-syntax-highlighting"]
-	path = .omz-custom/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting/
-[submodule ".omz-custom/plugins/zsh-completions"]
-	path = .omz-custom/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
-[submodule ".omz-custom/themes/aphrodite"]
-	path = .omz-custom/themes/aphrodite
+[submodule ".zsh/themes/aphrodite"]
+	path = .zsh/themes/aphrodite
 	url = https://github.com/win0err/aphrodite-terminal-theme
+[submodule ".zsh/plugins/zsh-autopair"]
+	path = .zsh/plugins/zsh-autopair
+	url = https://github.com/hlissner/zsh-autopair
+[submodule ".zsh/plugins/zsh-completions"]
+	path = .zsh/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+[submodule ".zsh/plugins/zsh-autosuggestions"]
+	path = .zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
