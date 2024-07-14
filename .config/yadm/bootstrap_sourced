@@ -4,17 +4,13 @@ echo "Sourcing ~/.zshrc"
 source $HOME/.zshrc
 echo ""
 
-echo "Checking for Oh My Zsh"
-if ! command -v omz >/dev/null 2>&1; then
-    echo "Installing Oh My Zsh"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
-echo ""
+re_source=false
 
 echo "Checking for nvm"
 if ! command -v nvm &>/dev/null; then
     echo "Installing nvm"
     PROFILE=/dev/null bash -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
+    re_source=true
 fi
 echo ""
 
@@ -24,8 +20,15 @@ echo "Checking for Pyenv"
 if ! command -v pyenv &>/dev/null; then
     echo "Installing Pyenv"
     curl https://pyenv.run | bash
+    re_source=true
 fi
 echo ""
+
+if $re_source; then
+    echo "Re-sourcing ~/.zshrc"
+    source "$HOME/.zshrc"
+    echo ""
+fi
 
 echo "Checking for Python $python_version"
 if ! pyenv versions | grep "$python_version" &>/dev/null; then
@@ -44,19 +47,21 @@ if ! pyenv virtualenvs | grep -w py3nvim &>/dev/null; then
 fi
 echo ""
 
-echo "Checking for Rust compiler"
-if ! command -v rustc &>/dev/null; then
-    echo "Installing Rust"
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+echo "Setting up node"
+nvm install node
+
+echo "Checking for pnpm"
+if ! command -v pnpm &>/dev/null; then
+    echo "Installing pnpm"
+    corepack enable
+    corepack install --global pnpm@latest
 fi
 echo ""
 
-echo "Checking for rust-analyzer"
-if ! rustup component list --installed | grep "rust-analyzer" &>/dev/null; then
-    echo "Installing rust-analyzer"
-    rustup component add rust-analyzer
+echo "Checking for global neovim pnpm package"
+if ! [[ $(pnpm list --global neovim) ]]; then
+    echo "Installing global neovim pnpm package"
+    pnpm install --global neovim
 fi
 echo ""
-
-echo "Bootstrap done"
 

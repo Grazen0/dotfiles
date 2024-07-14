@@ -16,7 +16,6 @@ echo "Initializing submodules"
 yadm submodule update --recursive --init
 echo ""
 
-
 echo "Refreshing pacman database"
 sudo pacman -Sy
 echo ""
@@ -27,6 +26,7 @@ echo ""
 
 echo "Syncing pkgfile database"
 pkgfile -u
+echo ""
 
 echo "Checking for Yay"
 if ! command -v yay &>/dev/null; then
@@ -40,10 +40,30 @@ echo ""
 
 echo "Refreshing Yay database"
 yay -Sy
+echo ""
 
 echo "Installing needed Yay packages"
 yay --needed -S $(cat $HOME/.config/yadm/yay_pkglist)
 echo ""
 
-zsh "$HOME/.config/yadm/post_pacman"
+echo "Enabling systemd services"
+sudo systemctl enable thermald
+sudo systemctl enable bluetooth
+echo ""
+
+echo "Checking for Rust compiler"
+if ! command -v rustc &>/dev/null; then
+    echo "Installing Rust"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+echo ""
+
+echo "Checking for rust-analyzer"
+if ! rustup component list --installed | grep "rust-analyzer" &>/dev/null; then
+    echo "Installing rust-analyzer"
+    rustup component add rust-analyzer
+fi
+echo ""
+
+zsh "$HOME/.config/yadm/bootstrap_sourced"
 
