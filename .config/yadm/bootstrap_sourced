@@ -6,14 +6,6 @@ echo ""
 
 re_source=false
 
-echo "Checking for nvm"
-if ! command -v nvm &>/dev/null; then
-    echo "Installing nvm"
-    PROFILE=/dev/null bash -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
-    re_source=true
-fi
-echo ""
-
 python_version="3.12.4"
 
 echo "Checking for Pyenv"
@@ -24,11 +16,25 @@ if ! command -v pyenv &>/dev/null; then
 fi
 echo ""
 
-if $re_source; then
-    echo "Re-sourcing .zshrc"
-    source "$ZDOTDIR/.zshrc"
-    echo ""
+node_version=$(cat $HOME/.node-version)
+
+echo "Checking for node $node_version"
+if ! [[ $(fnm ls | grep -w $node_version) ]]; then
+    echo "Installing node $node_version"
+    fnm install --corepack-enabled $node_version
 fi
+echo ""
+
+if ! command -v node &>/dev/null; then
+    fnm use
+fi
+
+echo "Checking for pnpm"
+if ! command -v pnpm &>/dev/null; then
+    echo "Installing pnpm"
+    corepack install --global pnpm@latest
+fi
+echo ""
 
 echo "Checking for Python $python_version"
 if ! pyenv versions | grep "$python_version" &>/dev/null; then
@@ -44,18 +50,6 @@ if ! pyenv virtualenvs | grep -w py3nvim &>/dev/null; then
     pyenv activate py3nvim
     pip install
     pyenv deactivate
-fi
-echo ""
-
-echo "Setting up node"
-nvm install node
-echo ""
-
-echo "Checking for pnpm"
-if ! command -v pnpm &>/dev/null; then
-    echo "Installing pnpm"
-    corepack enable
-    corepack install --global pnpm@latest
 fi
 echo ""
 
