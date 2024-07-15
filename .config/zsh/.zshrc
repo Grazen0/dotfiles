@@ -111,7 +111,19 @@ alias sudo="sudo " # necessary for some reason
 
 
 # ================================
-# Zsh environment
+# Zsh directory stack
+# ================================
+
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+
+# ================================
+# Zsh plugins
 # ================================
 
 source "$ZDOTDIR/themes/aphrodite/aphrodite.zsh-theme"
@@ -122,26 +134,45 @@ autopair-init
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 bindkey '^ ' autosuggest-accept
 
-_comp_options+=(globdots)
-fpath+="$ZDOTDIR/plugins/zsh-completions/src"
-autoload -U compinit; compinit
-
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 source "/usr/share/doc/pkgfile/command-not-found.zsh"
 
+
+# ================================
+# Zsh completion
+# ================================
+fpath+="$ZDOTDIR/plugins/zsh-completions/src"
+
+zmodload zsh/complist
+
+autoload -U compinit
+compinit
+_comp_options+=(globdots)
+
+setopt MENU_COMPLETE
+setopt AUTO_LIST
+setopt COMPLETE_IN_WORD
+
+zstyle ':completion:*' completer _extensions _complete
+zstyle ':completion:*' menu select
+
+
 # ================================
 # Zsh Vi mode
 # ================================
-#
+
 bindkey -v
 export KEYTIMEOUT=1
 source "$ZDOTDIR/plugins/cursor_mode"
 
+autoload -U select-word-style
+select-word-style bash
+
 # For some reason these aren't defaults
 bindkey "^H" backward-delete-char
 bindkey "^?" backward-delete-char
-bindkey "^W" backward-delete-word
+bindkey "^W" backward-kill-word
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
