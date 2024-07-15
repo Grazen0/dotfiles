@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-echo "Sourcing ~/.zshrc"
-source $HOME/.zshrc
+echo "Sourcing .zshrc"
+source "$ZDOTDIR/.zshrc"
 echo ""
 
 re_source=false
@@ -25,8 +25,8 @@ fi
 echo ""
 
 if $re_source; then
-    echo "Re-sourcing ~/.zshrc"
-    source "$HOME/.zshrc"
+    echo "Re-sourcing .zshrc"
+    source "$ZDOTDIR/.zshrc"
     echo ""
 fi
 
@@ -49,6 +49,7 @@ echo ""
 
 echo "Setting up node"
 nvm install node
+echo ""
 
 echo "Checking for pnpm"
 if ! command -v pnpm &>/dev/null; then

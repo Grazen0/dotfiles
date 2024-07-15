@@ -24,8 +24,15 @@ echo "Installing needed pacman packages"
 sudo pacman --needed -S $(cat $HOME/.config/yadm/pacman_pkglist)
 echo ""
 
+echo "Checking default shell"
+if ! [ -n "$($SHELL -c 'echo $ZSH_VERSION')" ]; then
+    echo "Setting Zsh as the default shell"
+    chsh -s $(which zsh)
+fi
+echo ""
+
 echo "Syncing pkgfile database"
-pkgfile -u
+sudo pkgfile -u
 echo ""
 
 echo "Checking for Yay"
