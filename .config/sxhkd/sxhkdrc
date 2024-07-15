@@ -43,6 +43,10 @@ XF86Audio{Play,Next,Prev}
 XF86MonBrightness{Up,Down}  
 	brightnessctl s 10%{+,-}  
 
+# best shortcut
+super + ctrl + shift + alt + l
+	gio open https://www.linkedin.com
+
 # keyboard layout switching
 alt + Shift_L
     setxkbmap -query | grep -q 'latam' && setxkbmap us || setxkbmap latam,us
