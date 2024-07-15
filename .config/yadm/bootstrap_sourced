@@ -48,7 +48,7 @@ if ! pyenv virtualenvs | grep -w py3nvim &>/dev/null; then
     echo "Creating py3nvim environment"
     pyenv virtualenv py3nvim
     pyenv activate py3nvim
-    pip install
+    pip install pynvim
     pyenv deactivate
 fi
 echo ""
