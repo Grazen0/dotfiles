@@ -15,31 +15,8 @@ export PRETTIERD_DEFAULT_CONFIG="$XDG_CONFIG_HOME/prettierd.json"
 # Program environments
 # ================================
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# pnpm
-export PNPM_HOME="$XDG_DATA_HOME/pnpm"
-case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
-
-# Cargo
-CARGO_ENV="$HOME/.cargo/env"
-if [ -f $CARGO_ENV ]; then
-    . $CARGO_ENV
-fi
-
-
-# Bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
-
+# fnm
+eval "$(fnm env --use-on-cd)" > /dev/null
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -47,46 +24,30 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-
 # TeX Live
 export PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux"
 export MANPATH="$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man"
 export INFOPATH="$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info"
 
-
 # thefuck
 eval $(thefuck --alias)
-
-
-# ranger
-ranger_cd() {
-    temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
-    ranger --choosedir="$temp_file" -- "${@:-$PWD}"
-    if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
-        cd -- "$chosen_dir"
-    fi
-    rm -f -- "$temp_file"
-}
-
 
 # bat
 export BAT_THEME="kanagawa"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
-batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
-}
-
 
 # ================================
 # Aliases
 # ================================
 
+# xinit
+alias s="startx"
+
 # Python virtualenv aliases
 alias ve="python3 -m venv ./.venv"
 alias va="source ./.venv/bin/activate"
-
 
 # ls -> exa
 alias ls="exa --color=auto"
@@ -142,6 +103,7 @@ source "/usr/share/doc/pkgfile/command-not-found.zsh"
 # ================================
 # Zsh completion
 # ================================
+
 fpath+="$ZDOTDIR/plugins/zsh-completions/src"
 
 zmodload zsh/complist
@@ -150,7 +112,6 @@ autoload -U compinit
 compinit
 _comp_options+=(globdots)
 
-setopt MENU_COMPLETE
 setopt AUTO_LIST
 setopt COMPLETE_IN_WORD
 
@@ -214,4 +175,5 @@ bindkey -M vicmd cs change-surround
 bindkey -M vicmd ds delete-surround
 bindkey -M vicmd ys add-surround
 bindkey -M visual S add-surround
+
 
