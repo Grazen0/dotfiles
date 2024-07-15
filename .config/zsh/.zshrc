@@ -128,6 +128,7 @@ autoload -U compinit; compinit
 
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+source "/usr/share/doc/pkgfile/command-not-found.zsh"
 
 # ================================
 # Zsh Vi mode
