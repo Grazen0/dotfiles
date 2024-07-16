@@ -7,6 +7,13 @@ echo "      YADM BOOTSTRAP       "
 echo "==========================="
 echo ""
 
+echo "Checking for sudo command"
+if ! command -v sudo &>/dev/null; then
+    echo "You must install the sudo package before running this script"
+    exit 1
+fi
+echo ""
+
 echo "Initializing submodules"
 yadm submodule update --recursive --init
 echo ""
