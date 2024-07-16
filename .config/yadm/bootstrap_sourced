@@ -21,7 +21,7 @@ node_version=$(cat $HOME/.node-version)
 echo "Checking for node $node_version"
 if ! [[ $(fnm ls | grep -w $node_version) ]]; then
     echo "Installing node $node_version"
-    fnm install --corepack-enabled $node_version
+    fnm install --corepack-enabled
 fi
 echo ""
 
