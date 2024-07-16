@@ -11,5 +11,5 @@ if [[ $player_status = "Playing" ]]; then
 elif [[ $player_status = "Paused" ]]; then
     echo "%{F#727169}  $metadata%{F-}"
 else
-    echo ""
+    echo " "
 fi
