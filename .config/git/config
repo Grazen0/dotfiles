@@ -1,7 +1,7 @@
 [init]
 	defaultBranch = main
 [user]
-	email = josedanielgrayson@gmail.com
+	email = josedanielgrayson@proton.me
 	name = ElCholoGamer
 [pull]
 	rebase = false
