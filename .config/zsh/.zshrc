@@ -18,6 +18,18 @@ export PRETTIERD_DEFAULT_CONFIG="$XDG_CONFIG_HOME/prettierd.json"
 # fnm
 eval "$(fnm env --use-on-cd)" > /dev/null
 
+# pnpm
+export PNPM_HOME="/home/jdgt/.local/share/pnpm"
+case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "/home/jdgt/.bun/_bun" ] && source "/home/jdgt/.bun/_bun"
+
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
