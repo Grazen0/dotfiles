@@ -85,6 +85,7 @@ xorg-xinit
 xorg-xrandr
 xorg-xsetroot
 xsecurelock
+xss-lock
 yadm
 zathura
 zathura-pdf-mupdf
