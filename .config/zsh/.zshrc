@@ -79,7 +79,7 @@ alias la="ls -A"
 alias ll="ls -lhF --sort=type --icons"
 alias lla="ll -A --sort=type --icons"
 alias l="ls -F"
-alias lt="ls -T"
+alias lt="ls -T --icons"
 alias lta="lt -A"
 
 # Peaclock with config
