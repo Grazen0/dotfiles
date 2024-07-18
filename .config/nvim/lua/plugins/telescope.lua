@@ -9,6 +9,18 @@ return {
 			pickers = {
 				find_files = {
 					hidden = true,
+					file_ignore_patterns = {
+						'.git/',
+						'.cache',
+						'%.o',
+						'%.a',
+						'%.out',
+						'%.class',
+						'%.pdf',
+						'%.mkv',
+						'%.mp4',
+						'%.zip',
+					},
 				},
 			},
 			defaults = {
@@ -22,9 +34,13 @@ return {
 
 		local builtin = require('telescope.builtin')
 
-		vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-		vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-		vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-		vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+		local opts = {
+			noremap = true,
+		}
+
+		vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
+		vim.keymap.set('n', '<leader>fg', builtin.live_grep, opts)
+		vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
+		vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)
 	end,
 }

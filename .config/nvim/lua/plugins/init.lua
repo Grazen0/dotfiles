@@ -4,6 +4,7 @@ return {
 	'tpope/vim-surround',
 	'andweeb/presence.nvim',
 	'fladson/vim-kitty',
+	'b0o/schemastore.nvim',
 	{
 		'williamboman/mason-lspconfig.nvim',
 		dependencies = { 'williamboman/mason.nvim' },
@@ -44,8 +45,7 @@ return {
 	{
 		'KeitaNakamura/tex-conceal.vim',
 		init = function()
-			vim.opt.conceallevel = 1
-			vim.g.tex_concel = 'abdmg'
+			vim.g.tex_conceal = 'abdmg'
 			vim.cmd('hi Conceal ctermbg=None')
 		end,
 	},

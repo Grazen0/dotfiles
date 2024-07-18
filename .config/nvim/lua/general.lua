@@ -7,6 +7,7 @@ g.python3_host_prog = '/home/jdgt/.pyenv/versions/py3nvim/bin/python'
 
 o.encoding = 'utf-8'
 o.compatible = false
+o.hidden = true
 
 vim.cmd('filetype plugin indent on')
 vim.cmd('set clipboard+=unnamedplus')

@@ -64,6 +64,9 @@ return {
 	end,
 	lazy = false,
 	opts = {
+		hijack_directories = {
+			enable = false,
+		},
 		view = {
 			relativenumber = true,
 			float = {

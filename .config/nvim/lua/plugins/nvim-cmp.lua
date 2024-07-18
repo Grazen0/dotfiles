@@ -272,17 +272,21 @@ return {
 						},
 					})
 			end,
-			settings = {
-				Lua = {},
-			},
 		})
-
 		require('lspconfig').pyright.setup({ capabilities = capabilities })
 		require('lspconfig').tsserver.setup({ capabilities = capabilities })
 		require('lspconfig').clangd.setup({ capabilities = capabilities })
 		require('lspconfig').rust_analyzer.setup({ capabilities = capabilities })
 		require('lspconfig').texlab.setup({ capabilities = capabilities })
-		require('lspconfig').jsonls.setup({ capabilities = capabilities })
+		require('lspconfig').jsonls.setup({
+			capabilities = capabilities,
+			settings = {
+				json = {
+					schemas = require('schemastore').json.schemas(),
+					validate = { enable = true },
+				},
+			},
+		})
 		require('lspconfig').html.setup({ capabilities = capabilities })
 		require('lspconfig').cssls.setup({ capabilities = capabilities })
 		require('lspconfig').svelte.setup({ capabilities = capabilities })
