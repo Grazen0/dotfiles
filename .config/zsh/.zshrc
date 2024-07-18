@@ -141,7 +141,7 @@ _comp_options+=(globdots)
 setopt AUTO_LIST
 setopt COMPLETE_IN_WORD
 
-zstyle ':completion:*' completer _extensions _complete
+zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' menu select
 
 
