@@ -60,6 +60,10 @@ sudo systemctl enable thermald
 sudo systemctl enable bluetooth
 echo ""
 
+echo "Building bat cache"
+bat cache --build
+echo ""
+
 echo "Checking for Rust compiler"
 if ! command -v rustc &>/dev/null; then
     echo "Installing Rust"
