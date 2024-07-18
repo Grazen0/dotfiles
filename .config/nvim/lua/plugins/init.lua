@@ -1,9 +1,17 @@
 return {
+	'mg979/vim-visual-multi',
+	'tpope/vim-fugitive',
+	'tpope/vim-surround',
+	'andweeb/presence.nvim',
+	'fladson/vim-kitty',
 	{
 		'williamboman/mason-lspconfig.nvim',
 		dependencies = { 'williamboman/mason.nvim' },
+		config = true,
 		opts = {
 			ensure_installed = {
+				'html',
+				'cssls',
 				'lua_ls',
 				'jsonls',
 				'clangd',
@@ -13,19 +21,26 @@ return {
 				'rust_analyzer',
 			},
 		},
-		config = true,
 	},
 	{
 		'williamboman/mason.nvim',
 		config = true,
+		opts = {
+
+			ui = {
+				icons = {
+					package_installed = '✓',
+					package_pending = '➜',
+					package_uninstalled = '✗',
+				},
+			},
+		},
 	},
 	{
 		'windwp/nvim-autopairs',
-		event = 'InsertEnter',
 		config = true,
+		event = 'InsertEnter',
 	},
-	'fladson/vim-kitty',
-	'baskerville/vim-sxhkdrc',
 	{
 		'KeitaNakamura/tex-conceal.vim',
 		init = function()
@@ -34,17 +49,10 @@ return {
 			vim.cmd('hi Conceal ctermbg=None')
 		end,
 	},
-	'tpope/vim-fugitive',
-	'tpope/vim-surround',
-	'andweeb/presence.nvim',
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = true,
-	},
-	{
-		'mg979/vim-visual-multi',
-		branch = 'master',
 	},
 	{
 		'iamcco/markdown-preview.nvim',

@@ -193,6 +193,7 @@ return {
 			}),
 		})
 
+		-- Search completion
 		cmp.setup.cmdline({ '/', '?' }, {
 			completion = { autocomplete = false },
 			mapping = cmp.mapping.preset.cmdline(),
@@ -204,6 +205,7 @@ return {
 			},
 		})
 
+		-- Command completion
 		cmp.setup.cmdline(':', {
 			completion = { autocomplete = false },
 			sources = cmp.config.sources(
@@ -213,11 +215,42 @@ return {
 			matching = { disallow_symbol_nonprefix_matching = false },
 		})
 
-		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-		local lspconfig = require('lspconfig')
+		-- Disable inline diagnostics
+		vim.diagnostic.config({
+			virtual_text = false,
+		})
 
-		-- Lua language server with Neovim config completion
-		lspconfig.lua_ls.setup({
+		-- Show diagnostics on hover
+		vim.o.updatetime = 250
+		vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+			group = vim.api.nvim_create_augroup(
+				'float_diagnostic_cursor',
+				{ clear = true }
+			),
+			callback = function()
+				vim.diagnostic.open_float(
+					nil,
+					{ focus = false, scope = 'cursor' }
+				)
+			end,
+		})
+
+		-- Custom icons
+		local signs = {
+			Error = '󰅙 ',
+			Warn = ' ',
+			Hint = '󰌵 ',
+			Info = ' ',
+		}
+		for type, icon in pairs(signs) do
+			local hl = 'DiagnosticSign' .. type
+			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+		end
+
+		-- LSP SETUPS
+		local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+		require('lspconfig').lua_ls.setup({
 			capabilities = capabilities,
 			on_init = function(client)
 				local path = client.workspace_folders[1].name
@@ -243,11 +276,15 @@ return {
 				Lua = {},
 			},
 		})
-		lspconfig.pyright.setup({ capabilities = capabilities })
-		lspconfig.tsserver.setup({ capabilities = capabilities })
-		lspconfig.clangd.setup({ capabilities = capabilities })
-		lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-		lspconfig.texlab.setup({ capabilities = capabilities })
-		lspconfig.jsonls.setup({ capabilities = capabilities })
+
+		require('lspconfig').pyright.setup({ capabilities = capabilities })
+		require('lspconfig').tsserver.setup({ capabilities = capabilities })
+		require('lspconfig').clangd.setup({ capabilities = capabilities })
+		require('lspconfig').rust_analyzer.setup({ capabilities = capabilities })
+		require('lspconfig').texlab.setup({ capabilities = capabilities })
+		require('lspconfig').jsonls.setup({ capabilities = capabilities })
+		require('lspconfig').html.setup({ capabilities = capabilities })
+		require('lspconfig').cssls.setup({ capabilities = capabilities })
+		require('lspconfig').svelte.setup({ capabilities = capabilities })
 	end,
 }

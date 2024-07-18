@@ -8,6 +8,7 @@ return {
 	opts = {
 		format_on_save = format_opts,
 		formatters_by_ft = {
+			html = { { 'prettierd', 'prettier' } },
 			javascriptreact = { { 'prettierd', 'prettier' } },
 			typescriptreact = { { 'prettierd', 'prettier' } },
 			javascript = { { 'prettierd', 'prettier' } },
