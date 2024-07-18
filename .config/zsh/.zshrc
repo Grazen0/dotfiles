@@ -50,6 +50,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
 # xsecurelock
+export XSECURELOCK_SAVER="saver_mpv"
+export XSECURELOCK_LIST_VIDEOS_COMMAND="find ~/Videos/Screensavers -type f"
 export XSECURELOCK_BACKGROUND_COLOR="#1f1f28"
 export XSECURELOCK_AUTH_BACKGROUND_COLOR="#16161d"
 export XSECURELOCK_AUTH_FOREGROUND_COLOR="#dcd7ba"
@@ -88,6 +90,8 @@ alias sd="cd ~ && cd \$(fzf --walker=dir,hidden)"
 
 
 # rmtrash aliases
+alias rmr="/bin/rm"
+alias rmdirr="/bin/rmdir"
 alias rm="rmtrash"
 alias rmdir="rmdirtrash"
 alias sudo="sudo " # necessary for some reason
