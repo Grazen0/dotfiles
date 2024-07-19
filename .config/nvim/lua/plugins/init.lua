@@ -5,6 +5,33 @@ return {
 	'andweeb/presence.nvim',
 	'fladson/vim-kitty',
 	'b0o/schemastore.nvim',
+	'DaikyXendo/nvim-material-icon',
+	'airblade/vim-gitgutter',
+	{
+		'rmagatti/auto-session',
+		dependencies = { 'nvim-telescope/telescope.nvim' },
+		opts = {
+			auto_session_suppress_dirs = {
+				'~/',
+				'~/Code',
+				'~/Downloads',
+				'/',
+			},
+		},
+		config = function(_, opts)
+			require('auto-session').setup(opts)
+
+			vim.o.sessionoptions =
+				'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+
+			vim.keymap.set(
+				'n',
+				'<leader>fs',
+				require('auto-session.session-lens').search_session,
+				{ noremap = true }
+			)
+		end,
+	},
 	{
 		'williamboman/mason-lspconfig.nvim',
 		dependencies = { 'williamboman/mason.nvim' },
@@ -51,7 +78,6 @@ return {
 	},
 	{
 		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = true,
 	},
 	{

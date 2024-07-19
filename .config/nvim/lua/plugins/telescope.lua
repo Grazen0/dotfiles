@@ -25,8 +25,11 @@ return {
 			},
 			defaults = {
 				mappings = {
+					n = {
+						['q'] = actions.close,
+					},
 					i = {
-						['<Esc>'] = actions.close,
+						['<C-u>'] = false,
 					},
 				},
 			},
@@ -41,6 +44,7 @@ return {
 		vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
 		vim.keymap.set('n', '<leader>fg', builtin.live_grep, opts)
 		vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
+		vim.keymap.set('n', '<leader>fr', builtin.lsp_references, opts)
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)
 	end,
 }

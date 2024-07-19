@@ -47,53 +47,27 @@ local function my_on_attach(bufnr)
 	vim.keymap.set('n', 'H', api.tree.collapse_all, opts('Collapse All'))
 end
 
-local HEIGHT_RATIO = 0.8
-local WIDTH_RATIO = 0.25
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 return {
 	'kyazdani42/nvim-tree.lua',
+	lazy = false,
 	config = function(_, opts)
 		require('nvim-tree').setup(opts)
 
 		vim.api.nvim_set_keymap(
 			'n',
-			'<leader>tt',
+			'<leader>e',
 			'<cmd>NvimTreeToggle<CR>',
 			{ silent = true, noremap = true }
 		)
 	end,
-	lazy = false,
 	opts = {
-		hijack_directories = {
-			enable = false,
-		},
+		sync_root_with_cwd = true,
+		respect_buf_cwd = true,
 		view = {
 			relativenumber = true,
-			float = {
-				enable = true,
-				open_win_config = function()
-					local screen_w = vim.opt.columns:get()
-					local screen_h = vim.opt.lines:get()
-						- vim.opt.cmdheight:get()
-					local window_w = screen_w * WIDTH_RATIO
-					local window_h = screen_h * HEIGHT_RATIO
-					local window_w_int = math.floor(window_w)
-					local window_h_int = math.floor(window_h)
-					local center_x = (screen_w - window_w) / 2
-					local center_y = ((vim.opt.lines:get() - window_h) / 2)
-						- vim.opt.cmdheight:get()
-					return {
-						relative = 'editor',
-						row = center_y,
-						col = center_x,
-						width = window_w_int,
-						height = window_h_int,
-					}
-				end,
-			},
-			width = {
-				min = 40,
-			},
 		},
 		filters = {
 			custom = { '^.git$' },
@@ -101,8 +75,10 @@ return {
 		},
 		update_focused_file = {
 			enable = true,
+			update_root = true,
 		},
 		hijack_cursor = true,
+		hijack_netrw = false,
 		actions = { open_file = { quit_on_open = true } },
 		renderer = {
 			highlight_git = 'name',

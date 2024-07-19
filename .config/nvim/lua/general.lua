@@ -12,6 +12,7 @@ o.hidden = true
 vim.cmd('filetype plugin indent on')
 vim.cmd('set clipboard+=unnamedplus')
 
+o.signcolumn = 'yes'
 o.autoindent = true
 o.expandtab = false
 o.tabstop = 4
