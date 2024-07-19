@@ -27,7 +27,7 @@
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "tex-conceal.vim": { "branch": "master", "commit": "93ae39d9222b0892684d02324b85ee9d3647bf8e" },
   "ultisnips": { "branch": "master", "commit": "49dc8cb2086db19d385791c8e1635723b0fd95c7" },
-  "vim-fugitive": { "branch": "master", "commit": "8c8cdf4405cb8bdb70dd9812a33bb52363a87dbc" },
+  "vim-fugitive": { "branch": "master", "commit": "0444df68cd1cdabc7453d6bd84099458327e5513" },
   "vim-gitgutter": { "branch": "main", "commit": "7b0b5098e3e57be86bb96cfbf2b8902381eef57c" },
   "vim-kitty": { "branch": "main", "commit": "9cc594a634308aa3bfaf3da5b5e741da1c0144c1" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
