@@ -58,6 +58,7 @@ picom
 pkgfile
 playerctl
 polybar
+powertop
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
