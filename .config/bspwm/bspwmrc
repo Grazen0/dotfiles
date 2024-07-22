@@ -86,6 +86,11 @@ killall -q greenclip
 greenclip daemon &
 
 
+# pcmanfm daemon
+pkill -f "pcmanfm-qt --daemon-mode"
+pcmanfm-qt --daemon-mode &
+
+
 # disable ugly cursor cross
 xsetroot -cursor_name left_ptr
 
