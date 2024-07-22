@@ -45,7 +45,7 @@ bspc rule -a Spotify desktop=^10 private=on
 # Floating stuff
 bspc rule -a Blueman-manager state=floating
 bspc rule -a Nm-connection-editor state=floating
-bspc rule -a Pcmanfm state=floating
+bspc rule -a pcmanfm-qt state=floating
 bspc rule -a zoom state=floating
 bspc rule -a Nvidia-settings state=floating
 
@@ -76,9 +76,9 @@ if [[ $secondary_monitor ]]; then
 fi
 
 
-# lxqt-policykit-agent
-killall -q lxqt-policykit-agent
-lxqt-policykit-agent &
+# lxsession
+killall -q lxpolkit
+lxpolkit &
 
 
 # greenclip
@@ -86,22 +86,9 @@ killall -q greenclip
 greenclip daemon &
 
 
-# nm-applet
-killall -q nm-applet
-nm-applet &
+# disable ugly cursor cross
+xsetroot -cursor_name left_ptr
 
 
 # Startup programs
-if [[ "$1" = 0 ]]
-then
-    if command -v discord &> /dev/null
-    then
-        discord --start-minimized &
-    fi
-
-    if command -v whatsapp-for-linux &> /dev/null
-    then
-        bspc rule -a Whatsapp-for-linux focus=off follow=off -o
-        whatsapp-for-linux &
-    fi
-fi
+dex --autostart &

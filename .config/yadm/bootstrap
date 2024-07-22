@@ -1,6 +1,10 @@
-#!/bin/sh
+#!/bin/bash
+
+set -eu
 
 cd "$HOME"
+
+bootstrap_file=${BASH_SOURCE[0]}
 
 echo "==========================="
 echo "      YADM BOOTSTRAP       "
@@ -78,5 +82,5 @@ if ! rustup component list --installed | grep "rust-analyzer" &>/dev/null; then
 fi
 echo ""
 
-zsh "$HOME/.config/yadm/bootstrap_sourced"
+zsh "${bootstrap_file}_sourced"
 

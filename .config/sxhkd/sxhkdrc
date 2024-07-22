@@ -30,6 +30,10 @@ super + v
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# duplicate window
+super + d
+	eval $(cat /proc/$(xdotool getactivewindow getwindowpid)/cmdline)
+
 # xf86 audio and brightness control
 XF86Audio{Raise,Lower}Volume
     amixer -D pulse sset Master 5%{+,-} unmute
