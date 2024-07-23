@@ -1,4 +1,3 @@
-albafetch-bin
 cava
 fnm
 kanagawa-gtk-theme-git
@@ -6,10 +5,11 @@ kanagawa-icon-theme-git
 librewolf-bin
 peaclock
 pipes.sh
+qt5-styleplugins
+qt6gtk2
 rmtrash
 rofi-greenclip
 rofi-power-menu
 ttf-ms-win11-auto
-visual-studio-code-bin
 whatsapp-for-linux-git
 zoom
