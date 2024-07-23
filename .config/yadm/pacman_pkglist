@@ -22,7 +22,6 @@ ffmpegthumbnailer
 fzf
 gimp
 git
-gparted
 grub
 gvfs
 imagemagick
@@ -35,6 +34,7 @@ linux-firmware
 linux-headers
 lua51
 luarocks
+lxqt-sudo
 lxsession-gtk3
 maim
 man-db
