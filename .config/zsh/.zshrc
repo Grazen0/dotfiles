@@ -25,11 +25,6 @@ case ":$PATH:" in
     *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# Bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-[ -s "/home/jdgt/.bun/_bun" ] && source "/home/jdgt/.bun/_bun"
-
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -144,6 +139,7 @@ setopt COMPLETE_IN_WORD
 zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' menu select
 
+bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # ================================
 # Zsh Vi mode
