@@ -4,6 +4,8 @@ PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:$PATH"
 
 # sxhkd
 pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x picom > /dev/null || picom &
+pgrep -x dunst > /dev/null || dunst &
 
 # Secondary monitor setup
 xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal \
@@ -54,6 +56,8 @@ bspc rule -a Nvidia-settings state=floating
 xset s 300 5
 xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
 
+# disable ugly cursor cross
+xsetroot -cursor_name left_ptr
 
 # nitrogen
 nitrogen --restore &
@@ -91,9 +95,8 @@ pkill -f "pcmanfm-qt --daemon-mode"
 pcmanfm-qt --daemon-mode &
 
 
-# disable ugly cursor cross
-xsetroot -cursor_name left_ptr
-
-
-# Startup programs
-dex --autostart &
+if [ "$1" = 0 ]; then
+    # Startup programs
+    dex --autostart &
+    touch /home/jdgt/a
+fi
