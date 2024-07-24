@@ -129,14 +129,14 @@ fpath+="$ZDOTDIR/plugins/zsh-completions/src"
 
 zmodload zsh/complist
 
-autoload -U compinit
-compinit
+autoload -U compinit && compinit
 _comp_options+=(globdots)
 
 setopt AUTO_LIST
 setopt COMPLETE_IN_WORD
 
-zstyle ':completion:*' completer _extensions _complete _approximate
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' completer _extensions _complete
 zstyle ':completion:*' menu select
 
 bindkey -M menuselect '^[[Z' reverse-menu-complete
