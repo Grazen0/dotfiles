@@ -4,6 +4,7 @@ return {
 	'tpope/vim-surround',
 	'andweeb/presence.nvim',
 	'fladson/vim-kitty',
+	'baskerville/vim-sxhkdrc',
 	'b0o/schemastore.nvim',
 	'DaikyXendo/nvim-material-icon',
 	'airblade/vim-gitgutter',
