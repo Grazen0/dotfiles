@@ -2,7 +2,7 @@
 
 set -eu
 
-layouts_file="$XDG_CONFIG_HOME/X11/xkb_layouts"
+layouts_file="${XKB_LAYOUTS_FILE:-$XDG_CONFIG_HOME/X11/keyboard_layouts}"
 
 if [ ! -s "$layouts_file" ]; then
     exit

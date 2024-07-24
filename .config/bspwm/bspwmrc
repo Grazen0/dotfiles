@@ -5,12 +5,10 @@ PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:$PATH"
 INTERNAL_MONITOR="eDP-1"
 EXTERNAL_MONITOR="HDMI-1"
 
-xkb_layouts_file="$XDG_CONFIG_HOME/X11/xkb_layouts"
-
 if [[ "$1" = 0 ]]; then
     # Default keyboard layout
-    if [ -s "$xkb_layouts_file" ]; then
-        setxkbmap "$(head -1 $xkb_layouts_file)"
+    if [ -s "$XKB_LAYOUTS_FILE" ]; then
+        setxkbmap "$(head -1 $XKB_LAYOUTS_FILE)"
     fi
 
     if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then

@@ -73,12 +73,12 @@ alt + Shift_L
 
 # Screen capture
 Print
-	maim --select | xclip -selection clipboard -t image/png
+	maim -s | xclip -selection clipboard -t image/png
 
 # Screen capture (to screenshots folder)
 shift + Print
-	mkdir -p $HOME/Pictures/Screenshots \
-		&& maim --select >> $HOME/Pictures/Screenshots/$(date +%s).png
+	mkdir -p "$HOME/Pictures/Screenshots" \
+		&& maim -s "$HOME/Pictures/Screenshots/$(date "+%Y-%m-%d %H-%M-%S").png"
 
 
 # =============================
