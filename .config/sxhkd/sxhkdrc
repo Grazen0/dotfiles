@@ -1,75 +1,89 @@
-#
-# wm independent hotkeys
-#
-
-# power menu
-super + x
-	rofi -show menu -modi "menu:rofi-power-menu --choices=shutdown/reboot/suspend/logout/lockscreen"
-
-# terminal emulator
-super + Return
-	kitty
-
-# terminal emulator (floating)
-super + shift + Return
-	bspc rule -a kitty state=floating -o && kitty
-
-# q program launcher
-super + space
-	rofi -show drun
-
-# emoji selector
-super + shift + period
-	rofimoji --skin-tone neutral
-
-# clipboard history
-super + v
-	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
-
-# make sxhkd reload its configuration files:
+# Reload this sxhkd config
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# duplicate window
+# Disable middle click paste
+~button2
+    ;echo -n | xclip -in
+
+# Duplicate window
 super + d
 	eval $(cat /proc/$(xdotool getactivewindow getwindowpid)/cmdline)
 
-# xf86 audio and brightness control
+
+# =============================
+# Program shortcuts
+# =============================
+
+# Terminal emulator
+super + Return
+	kitty
+
+# Terminal emulator (floating)
+super + shift + Return
+	bspc rule -a kitty state=floating -o && kitty
+
+# Web browser
+super + b
+	$BROWSER
+
+# Wacky windows shortcut
+super + ctrl + shift + alt + l
+	$BROWSER https://www.linkedin.com
+
+
+# =============================
+# Rofi menus
+# =============================
+
+# Power menu
+super + x
+	rofi -show menu -modi "menu:rofi-power-menu --choices=shutdown/reboot/suspend/logout/lockscreen"
+
+# Program launcher
+super + space
+	rofi -show drun
+
+# Emoji selector
+super + shift + period
+	rofimoji --skin-tone neutral
+
+# Clipboard history
+super + v
+	rofi -modi "clipboard:greenclip print" -show clipboard -run-command "{cmd}"
+
+
+# =============================
+# Misc system control
+# =============================
+
+# Audio and brightness control
 XF86Audio{Raise,Lower}Volume
     amixer -D pulse sset Master 5%{+,-} unmute
-
 XF86AudioMute
 	amixer -D pulse sset Master toggle
-
 XF86Audio{Play,Next,Prev}
 	playerctl {play-pause,next,previous}
-
 XF86MonBrightness{Up,Down}  
-	brightnessctl s 10%{+,-}  
+	brightnessctl s 5%{+,-}  
 
-# best shortcut
-super + ctrl + shift + alt + l
-	gio open https://www.linkedin.com
-
-# keyboard layout switching
+# Keyboard layout switching
 alt + Shift_L
-    setxkbmap -query | grep -q 'latam' && setxkbmap us || setxkbmap latam,us
+    "$HOME/.local/bin/switch_layout"
 
-# screen capture
+# Screen capture
 Print
 	maim --select | xclip -selection clipboard -t image/png
 
+# Screen capture (to screenshots folder)
 shift + Print
 	mkdir -p $HOME/Pictures/Screenshots \
 		&& maim --select >> $HOME/Pictures/Screenshots/$(date +%s).png
 
-# disable middle click paste
-~button2
-    ;echo -n | xclip -in
 
-#
-# bspwm hotkeys
-#
+# =============================
+# Bspwm
+# =============================
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -91,9 +105,10 @@ super + y
 super + g
 	bspc node -s biggest.window
 
-#
-# state/flags
-#
+
+# -----------------------------
+# State/flags
+# -----------------------------
 
 # set the window state
 super + {t,shift + t,s,f}
@@ -103,9 +118,10 @@ super + {t,shift + t,s,f}
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
-#
-# focus/swap
-#
+
+# -----------------------------
+# Focus/swap
+# -----------------------------
 
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
@@ -137,9 +153,10 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
-#
-# preselect
-#
+
+# -----------------------------
+# Preselect
+# -----------------------------
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
@@ -157,9 +174,10 @@ super + ctrl + space
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-#
-# move/resize
-#
+
+# -----------------------------
+# Move/resize
+# -----------------------------
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
