@@ -68,7 +68,7 @@ bspc config borderless_monocle            true
 # Some apps should open on a specific desktop
 bspc rule -a LibreWolf desktop=^2 private=on focus=on
 bspc rule -a obsidian desktop=^3 private=on focus=on
-bspc rule -a discord desktop=^7 private=on
+bspc rule -a discord desktop=^6 private=on
 bspc rule -a Spotify desktop=^10 private=on
 
 # Floating stuff
