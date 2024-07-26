@@ -10,5 +10,9 @@ return {
 	},
 	config = function(_, opts)
 		require('nvim-treesitter.configs').setup(opts)
+
+		vim.filetype.add({
+			pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
+		})
 	end,
 }
