@@ -61,8 +61,9 @@ export XSECURELOCK_DATETIME_FORMAT="%b %d, %Y - %H:%M"
 # Aliases
 # ================================
 
-# xinit
+# Display servers
 alias s="startx"
+alias h="Hyprland"
 
 # Python virtualenv aliases
 alias ve="python3 -m venv ./.venv"
