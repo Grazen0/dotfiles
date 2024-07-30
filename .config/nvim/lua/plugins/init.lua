@@ -9,6 +9,10 @@ return {
 	'DaikyXendo/nvim-material-icon',
 	'airblade/vim-gitgutter',
 	{
+		'RRethy/vim-hexokinase',
+		build = 'make hexokinase',
+	},
+	{
 		'rmagatti/auto-session',
 		dependencies = { 'nvim-telescope/telescope.nvim' },
 		opts = {
