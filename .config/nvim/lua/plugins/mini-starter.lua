@@ -11,6 +11,44 @@ local header = [[
 ░░░░░    ░░░░░  ░░░░░░   ░░░░░░     ░░░░░    ░░░░░ ░░░░░ ░░░ ░░░░░ 
 ]]
 
+-- Copied from https://github.com/rmagatti/auto-session/blob/main/lua/auto-session/init.lua
+local function get_session_files()
+	local AutoSession = require('auto-session')
+	local Lib = require('auto-session.lib')
+
+	local files = {}
+	local sessions_dir = AutoSession.get_root_dir()
+
+	if vim.fn.isdirectory(sessions_dir) == Lib._VIM_FALSE then
+		return files
+	end
+
+	local entries = vim.fn.readdir(sessions_dir, function(item)
+		return Lib.is_session_file(sessions_dir .. item)
+	end)
+
+	return vim.tbl_map(function(file_name)
+		--  sessions_dir is guaranteed to have a trailing separator so don't need to add another one here
+		local session_name
+		local display_name
+		if Lib.is_legacy_file_name(file_name) then
+			session_name = (
+				Lib.legacy_unescape_session_name(file_name):gsub('%.vim$', '')
+			)
+			display_name = session_name .. ' (legacy)'
+		else
+			session_name = Lib.escaped_session_name_to_session_name(file_name)
+			display_name = Lib.get_session_display_name(file_name)
+		end
+
+		return {
+			session_name = session_name,
+			display_name = display_name,
+			path = sessions_dir .. file_name,
+		}
+	end, entries)
+end
+
 return {
 	'echasnovski/mini.starter',
 	version = '*',
@@ -22,9 +60,7 @@ return {
 			footer = '',
 			items = {
 				function()
-					local auto_session = require('auto-session')
-					local sessions = auto_session.get_session_files()
-
+					local sessions = get_session_files()
 					local result = {}
 
 					for _, session in pairs(sessions) do
@@ -35,7 +71,9 @@ return {
 								.. session.display_name
 								.. ')',
 							action = function()
-								auto_session.RestoreSession(session.path)
+								vim.cmd(
+									':SessionRestore ' .. session.display_name
+								)
 							end,
 						})
 					end
