@@ -76,6 +76,7 @@ powertop
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
+pyenv
 python-pillow
 qt5-wayland
 qt6-wayland
@@ -83,6 +84,7 @@ ranger
 ripgrep
 rofi
 rofimoji
+rsync
 slurp
 socat
 sof-firmware

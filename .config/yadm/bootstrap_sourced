@@ -6,16 +6,6 @@ echo ""
 
 re_source=false
 
-python_version="3.12.4"
-
-echo "Checking for Pyenv"
-if ! command -v pyenv &>/dev/null; then
-    echo "Installing Pyenv"
-    curl https://pyenv.run | bash
-    re_source=true
-fi
-echo ""
-
 node_version=$(cat $HOME/.node-version)
 
 echo "Checking for node $node_version"
@@ -35,6 +25,8 @@ if ! command -v pnpm &>/dev/null; then
     corepack install --global pnpm@latest
 fi
 echo ""
+
+python_version="3.12.4"
 
 echo "Checking for Python $python_version"
 if ! pyenv versions | grep "$python_version" &>/dev/null; then
