@@ -102,7 +102,11 @@ bindkey '^ ' autosuggest-accept
 
 source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+
 source "/usr/share/doc/pkgfile/command-not-found.zsh"
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=default
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=default
 
 
 # ================================
@@ -126,8 +130,8 @@ zstyle ':completion:*' menu select
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # Better history search
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # ================================
 # Zsh Vi mode

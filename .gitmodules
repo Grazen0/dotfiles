@@ -13,3 +13,6 @@
 [submodule ".config/zsh/themes/aphrodite"]
 	path = .config/zsh/themes/aphrodite
 	url = https://github.com/win0err/aphrodite-terminal-theme
+[submodule ".config/zsh/plugins/zsh-history-substring-search"]
+	path = .config/zsh/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
