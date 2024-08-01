@@ -125,6 +125,10 @@ zstyle ':completion:*' menu select
 
 bindkey -M menuselect '^[[Z' reverse-menu-complete
 
+# Better history search
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
 # ================================
 # Zsh Vi mode
 # ================================
