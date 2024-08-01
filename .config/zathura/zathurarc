@@ -7,6 +7,8 @@ set adjust-open "best-fit"
 set scroll-full-overlap 0.01
 set scroll-step 100
 
+set selection-clipboard clipboard
+
 set default-fg                "#dcd7ba"
 set default-bg                "#16161d"
 set inputbar-bg               "#16161d"
@@ -27,8 +29,6 @@ set recolor-reverse-video true
 set recolor-lightcolor "#1f1f28"
 set recolor-darkcolor  "#dcd7ba"
 
-map j feedkeys "<C-Down>"
-map k feedkeys "<C-Up>"
 map u scroll half-up
 map d scroll half-down
 map D toggle_page_mode
@@ -39,10 +39,12 @@ map J zoom out
 map i recolor
 map p print
 
+map c set "first-page-column 1:1"
+map C set "first-page-column 1:2"
+
 set font "JetBrainsMonoNL Nerd Font 10"
 
 set render-loading false
 set scroll-step 50
 
 set database "sqlite"
-
