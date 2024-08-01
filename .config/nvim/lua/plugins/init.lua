@@ -39,8 +39,11 @@ return {
 	},
 	{
 		'williamboman/mason-lspconfig.nvim',
-		dependencies = { 'williamboman/mason.nvim' },
-		config = true,
+		dependencies = {
+			'williamboman/mason.nvim',
+			'neovim/nvim-lspconfig',
+			'hrsh7th/nvim-cmp',
+		},
 		opts = {
 			ensure_installed = {
 				'html',
@@ -54,6 +57,64 @@ return {
 				'rust_analyzer',
 			},
 		},
+		config = function(_, opts)
+			local m = require('mason-lspconfig')
+			m.setup(opts)
+
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+			local lsp_options = {
+				jsonls = {
+					settings = {
+						json = {
+							schemas = require('schemastore').json.schemas(),
+							validate = { enable = true },
+						},
+					},
+				},
+				lua_ls = {
+					settings = {
+						Lua = {},
+					},
+					on_init = function(client)
+						local path = client.workspace_folders[1].name
+						if
+							vim.loop.fs_stat(path .. '/.luarc.json')
+							or vim.loop.fs_stat(path .. '/.luarc.jsonc')
+						then
+							return
+						end
+
+						client.config.settings.Lua = vim.tbl_deep_extend(
+							'force',
+							client.config.settings.Lua,
+							{
+								runtime = {
+									version = 'LuaJIT',
+								},
+								workspace = {
+									checkThirdParty = false,
+									library = { vim.env.VIMRUNTIME },
+								},
+							}
+						)
+					end,
+				},
+			}
+
+			m.setup_handlers({
+				function(server_name)
+					if lsp_options[server_name] ~= nil then
+						lsp_options[server_name].capabilities = capabilities
+						require('lspconfig')[server_name].setup(
+							lsp_options[server_name]
+						)
+					else
+						require('lspconfig')[server_name].setup({ capabilities })
+					end
+				end,
+			})
+		end,
 	},
 	{
 		'williamboman/mason.nvim',

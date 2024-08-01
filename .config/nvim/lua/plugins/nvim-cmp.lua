@@ -166,6 +166,7 @@ return {
 		'hrsh7th/cmp-cmdline',
 		'quangnguyen30192/cmp-nvim-ultisnips',
 		'onsails/lspkind.nvim',
+		'williamboman/mason-lspconfig.nvim',
 	},
 	config = function()
 		local cmp = require('cmp')
@@ -247,52 +248,5 @@ return {
 			local hl = 'DiagnosticSign' .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 		end
-
-		-- LSP SETUPS
-		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-		require('lspconfig').lua_ls.setup({
-			capabilities = capabilities,
-			settings = {
-				Lua = {},
-			},
-			on_init = function(client)
-				local path = client.workspace_folders[1].name
-				if
-					vim.loop.fs_stat(path .. '/.luarc.json')
-					or vim.loop.fs_stat(path .. '/.luarc.jsonc')
-				then
-					return
-				end
-
-				client.config.settings.Lua =
-					vim.tbl_deep_extend('force', client.config.settings.Lua, {
-						runtime = {
-							version = 'LuaJIT',
-						},
-						workspace = {
-							checkThirdParty = false,
-							library = { vim.env.VIMRUNTIME },
-						},
-					})
-			end,
-		})
-		require('lspconfig').pyright.setup({ capabilities = capabilities })
-		require('lspconfig').tsserver.setup({ capabilities = capabilities })
-		require('lspconfig').clangd.setup({ capabilities = capabilities })
-		require('lspconfig').rust_analyzer.setup({ capabilities = capabilities })
-		require('lspconfig').texlab.setup({ capabilities = capabilities })
-		require('lspconfig').jsonls.setup({
-			capabilities = capabilities,
-			settings = {
-				json = {
-					schemas = require('schemastore').json.schemas(),
-					validate = { enable = true },
-				},
-			},
-		})
-		require('lspconfig').html.setup({ capabilities = capabilities })
-		require('lspconfig').cssls.setup({ capabilities = capabilities })
-		require('lspconfig').svelte.setup({ capabilities = capabilities })
 	end,
 }

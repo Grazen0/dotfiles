@@ -23,7 +23,7 @@ local function my_on_attach(bufnr)
 			api.node.open.edit()
 		else
 			api.node.open.edit()
-			api.tree.close()
+			-- api.tree.close()
 		end
 	end
 
@@ -43,7 +43,7 @@ local function my_on_attach(bufnr)
 
 	vim.keymap.set('n', 'l', edit_or_open, opts('Edit Or Open'))
 	vim.keymap.set('n', 'L', vsplit_preview, opts('Vsplit Preview'))
-	vim.keymap.set('n', 'h', api.tree.close, opts('Close'))
+	-- vim.keymap.set('n', 'h', api.tree.close, opts('Close'))
 	vim.keymap.set('n', 'H', api.tree.collapse_all, opts('Collapse All'))
 end
 
@@ -79,7 +79,7 @@ return {
 		},
 		hijack_cursor = true,
 		hijack_netrw = false,
-		actions = { open_file = { quit_on_open = true } },
+		-- actions = { open_file = { quit_on_open = true } },
 		renderer = {
 			highlight_git = 'name',
 			icons = {
