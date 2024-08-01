@@ -41,25 +41,12 @@ export BAT_THEME="kanagawa"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
-# xsecurelock
-export XSECURELOCK_SAVER="saver_mpv"
-export XSECURELOCK_LIST_VIDEOS_COMMAND="find ~/Videos/Screensavers -type f"
-export XSECURELOCK_BACKGROUND_COLOR="#1f1f28"
-export XSECURELOCK_AUTH_BACKGROUND_COLOR="#16161d"
-export XSECURELOCK_AUTH_FOREGROUND_COLOR="#dcd7ba"
-export XSECURELOCK_FONT="JetBrainsMonoNL Nerd Font"
-export XSECURELOCK_COMPOSITE_OBSCURER=0
-export XSECURELOCK_PASSWORD_PROMPT="asterisks"
-export XSECURELOCK_DISCARD_FIRST_KEYPRESS=0
-export XSECURELOCK_SHOW_DATETIME=1
-export XSECURELOCK_DATETIME_FORMAT="%b %d, %Y - %H:%M"
 
 # ================================
 # Aliases
 # ================================
 
-# Display servers
-alias s="startx"
+# Display server
 alias h="Hyprland"
 
 # Python virtualenv aliases
@@ -80,7 +67,6 @@ alias peaclock="peaclock --config-dir $XDG_CONFIG_HOME/peaclock"
 
 # Fuzzy cd
 alias sd="cd ~ && cd \$(fzf --walker=dir,hidden)"
-
 
 # rmtrash aliases
 alias rmr="/bin/rm"
@@ -195,5 +181,3 @@ bindkey -M vicmd cs change-surround
 bindkey -M vicmd ds delete-surround
 bindkey -M vicmd ys add-surround
 bindkey -M visual S add-surround
-
-
