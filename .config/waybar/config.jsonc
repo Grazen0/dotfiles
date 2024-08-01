@@ -3,7 +3,10 @@
 	"position": "top",
 	"height": 32,
 	"spacing": 4,
-	"margin": 8,
+	"margin-top": 8,
+	"margin-right": 8,
+	"margin-left": 8,
+	"margin-bottom": 0,
 	"fixed-center": false,
 	"modules-left": [
 		"custom/sysmenu",
