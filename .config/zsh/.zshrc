@@ -15,21 +15,18 @@ export PRETTIERD_DEFAULT_CONFIG="$XDG_CONFIG_HOME/prettierd.json"
 # Program environments
 # ================================
 
-# fnm
+# # fnm
 eval "$(fnm env --use-on-cd)" > /dev/null
 
 # pnpm
 export PNPM_HOME="/home/jdgt/.local/share/pnpm"
-case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+export PATH="$PNPM_HOME:$PATH"
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh --no-rehash)"
+eval "$(pyenv virtualenv-init - zsh --no-rehash)"
 
 # TeX Live
 export PATH="$PATH:/usr/local/texlive/2024/bin/x86_64-linux"
