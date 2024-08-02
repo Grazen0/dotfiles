@@ -1,0 +1,56 @@
+#!/bin/zsh
+
+function info_msg {
+    echo -e "\e[1;36m>> $1\e[0m"
+}
+
+function action_msg {
+    echo -e "\e[1;35m>> $1\e[0m"
+}
+
+info_msg "Sourcing .zshrc"
+source "$ZDOTDIR/.zshrc"
+
+node_version="v22.5.1"
+
+info_msg "Checking for node $node_version"
+if ! [[ $(fnm ls | grep -w $node_version) ]]; then
+    action_msg "Installing node $node_version"
+    fnm install $node_version --corepack-enabled
+fi
+
+info_msg "Checking default node version"
+if ! [[ $(fnm ls | grep "default" | grep "$node_version") ]] then
+    action_msg "Setting default node version to $node_version"
+    fnm default $node_version
+fi
+
+info_msg "Checking for pnpm"
+if ! command -v pnpm &>/dev/null; then
+    action_msg "Installing pnpm"
+    corepack install --global pnpm@latest
+fi
+
+python_version="3.12.4"
+
+info_msg "Checking for Python $python_version"
+if ! pyenv versions | grep "$python_version" &>/dev/null; then
+    pyenv install $python_version
+    pyenv global $python_version
+fi
+
+info_msg "Checking for py3nvim virtual environment"
+if ! pyenv virtualenvs | grep -w py3nvim &>/dev/null; then
+    action_msg "Creating py3nvim environment"
+    pyenv virtualenv py3nvim
+    pyenv activate py3nvim
+    pip install pynvim
+    pyenv deactivate
+fi
+
+info_msg "Checking for global neovim pnpm package"
+if ! [[ $(pnpm list --global neovim) ]]; then
+    action_msg "Installing global neovim pnpm package"
+    pnpm install --global neovim
+fi
+

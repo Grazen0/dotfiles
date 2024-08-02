@@ -2,85 +2,92 @@
 
 set -eu
 
+function info_msg {
+    echo -e "\e[1;36m>> $1\e[0m"
+}
+
+function action_msg {
+    echo -e "\e[1;35m>> $1\e[0m"
+}
+
+function error_msg {
+    echo -e "\e[1;41m>> $1\e[0m"
+}
+
 cd "$HOME"
 
-bootstrap_file=${BASH_SOURCE[0]}
+bootstrap_dir=$(dirname "${BASH_SOURCE[0]}")
 
-echo "==========================="
-echo "      YADM BOOTSTRAP       "
-echo "==========================="
-echo ""
+info_msg "============================"
+info_msg "       YADM BOOTSTRAP       "
+info_msg "============================"
+info_msg ""
 
-echo "Checking for sudo command"
+info_msg "Checking for sudo command"
+
 if ! command -v sudo &>/dev/null; then
-    echo "You must install the sudo package before running this script"
+    action_msg "You must install the sudo package before running this script"
     exit 1
 fi
-echo ""
 
-echo "Initializing submodules"
+action_msg "Initializing yadm submodules"
 yadm submodule update --recursive --init
-echo ""
 
-echo "Refreshing pacman database"
-sudo pacman -Sy
-echo ""
+action_msg "Updating pacman packages"
+sudo pacman -Syu
 
-echo "Installing needed pacman packages"
-sudo pacman --needed -S $(cat $HOME/.config/yadm/pacman_pkglist)
-echo ""
+action_msg "Installing needed pacman packages"
+sudo pacman --needed -S $(cat "$bootstrap_dir/pacman_pkglist")
 
-echo "Checking default shell"
+info_msg "Checking default shell"
 if ! [ -n "$($SHELL -c 'echo $ZSH_VERSION')" ]; then
-    echo "Setting Zsh as the default shell"
+    action_msg "Setting Zsh as the default shell"
     chsh -s $(which zsh)
 fi
-echo ""
 
-echo "Syncing pkgfile database"
+action_msg "Syncing pkgfile database"
 sudo pkgfile -u
-echo ""
 
-echo "Checking for Yay"
+info_msg "Checking for Yay"
 if ! command -v yay &>/dev/null; then
-    echo "Installing Yay"
+    action_msg "Installing Yay"
     sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay-bin.git
     cd yay-bin
     makepkg -si
+    cd ..
+    sudo rm -r yay-bin
+
+    action_msg "Generating development package database"
+    yay -Y --gendb
+    action_msg "Enabling development package updates"
+    yay -Y --devel --save
 fi
-echo ""
 
-echo "Refreshing Yay database"
+action_msg "Refreshing Yay database"
 yay -Sy
-echo ""
 
-echo "Installing needed Yay packages"
-yay --needed -S $(cat $HOME/.config/yadm/yay_pkglist)
-echo ""
+action_msg "Installing needed Yay packages"
+yay --needed -S $(cat $bootstrap_dir/yay_pkglist)
 
-echo "Enabling systemd services"
+action_msg "Enabling systemd services"
 sudo systemctl enable thermald
 sudo systemctl enable bluetooth
-echo ""
 
-echo "Building bat cache"
+action_msg "Building bat cache"
 bat cache --build
-echo ""
 
-echo "Checking for Rust compiler"
+info_msg "Checking for Rust compiler"
 if ! command -v rustc &>/dev/null; then
-    echo "Installing Rust"
+    action_msg "Installing Rust"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
-echo ""
 
-echo "Checking for rust-analyzer"
+info_msg "Checking for rust-analyzer"
 if ! rustup component list --installed | grep "rust-analyzer" &>/dev/null; then
-    echo "Installing rust-analyzer"
+    action_msg "Installing rust-analyzer"
     rustup component add rust-analyzer
 fi
-echo ""
 
-zsh "${bootstrap_file}_sourced"
+zsh "${bootstrap_dir}/bootstrap_zsh"
 
