@@ -108,7 +108,7 @@ done
 action_msg "Initializing yadm submodules"
 yadm submodule update --recursive --init
 
-action_msg "Installing needed pacman packages"
+action_msg "Updating system and installing needed pacman packages"
 sudo pacman --needed -Syu $(cat "$bootstrap_dir/pacman_pkglist")
 
 
@@ -136,11 +136,8 @@ if ! command -v yay &>/dev/null; then
     yay -Y --devel --save
 fi
 
-action_msg "Refreshing Yay database"
-yay -Sy
-
-action_msg "Installing needed Yay packages"
-yay --needed -S $(cat $bootstrap_dir/yay_pkglist)
+action_msg "Updating system and installing needed Yay packages"
+yay --needed -Syu $(cat $bootstrap_dir/yay_pkglist)
 
 if [ "$run_mkinitcpio" = true ]; then
     action_msg "Regenerating initramfs"
@@ -155,8 +152,8 @@ sudo systemctl enable bluetooth
 action_msg "Building bat cache"
 bat cache --build
 
-info_msg "Checking for Rust compiler"
-if ! command -v rustc &>/dev/null; then
+info_msg "Checking for rustup"
+if ! command -v rustup &>/dev/null; then
     action_msg "Installing Rust"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
