@@ -69,8 +69,6 @@ if ! [ -f "$vconsole_dest" ]; then
     echo "$vconsole" | sudo tee "$vconsole_dest" > /dev/null
 fi
 
-exit
-
 info_msg "Checking modprobe.d entries"
 modprobe_src="$bootstrap_dir/sys/modprobe.d"
 modprobe_dest="/etc/modprobe.d"
