@@ -59,6 +59,7 @@ pavucontrol
 pcmanfm-qt
 perl-file-homedir
 perl-yaml-tiny
+pkgfile
 playerctl
 polkit
 polkit-kde-agent
