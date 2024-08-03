@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+set -eu
+
+bootstrap_dir=$(dirname "$0")
 source "$bootstrap_dir/common_utils"
 
 info_msg "Sourcing .zshrc"

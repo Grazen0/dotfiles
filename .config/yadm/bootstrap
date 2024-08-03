@@ -5,7 +5,6 @@ set -eu
 cd "$HOME"
 
 bootstrap_dir=$(dirname "${BASH_SOURCE[0]}")
-
 source "$bootstrap_dir/common_utils"
 
 info_msg "============================"
@@ -20,36 +19,57 @@ if ! command -v sudo &>/dev/null; then
     exit 1
 fi
 
-function check_system_file {
-    local src="$1"
-    local dest="$2"
-    local display_name=$(basename "$dest")
-
-    if ! [ -f "$dest" ]; then
-        action_msg "Copying missing $display_name"
-        sudo cp "$src" "$dest"
-    elif ! cmp -s "$src" "$dest"; then
-        prompt "Replace current $display_name? [Y/n]"
-
-        if ! [[ $prompt_result == [nN] ]]; then
-            prompt "Backup current $display_name? [y/N]"
-
-            if [[ $prompt_result == [yY] ]]; then
-                action_msg "Moving $dest to ${dest}.bak"
-                sudo mv "$dest" "${dest}.bak"
-            fi
-
-            action_msg "Replacing $display_name"
-            sudo cp "$src" "$dest"
-        fi
-    fi
-}
-
 info_msg "Checking pacman.conf"
-check_system_file "$bootstrap_dir/sys/pacman.conf" "/etc/pacman.conf"
+pacman_conf_src="$bootstrap_dir/sys/pacman.conf"
+pacman_conf_dest="/etc/pacman.conf"
+
+if ! [ -f "$pacman_conf_dest" ]; then
+    action_msg "Copying missing pacman.conf"
+    sudo cp "$pacman_conf_src" "$pacman_conf_dest"
+elif ! cmp -s "$pacman_conf_src" "$pacman_conf_dest"; then
+    prompt "Replace current pacman.conf? [Y/n]"
+
+    if ! [[ $prompt_result == [nN] ]]; then
+        prompt "Backup current pacman.conf? [y/N]"
+
+        if [[ $prompt_result == [yY] ]]; then
+            action_msg "Moving $pacman_conf_dest to ${pacman_conf_dest}.bak"
+            sudo mv "$pacman_conf_dest" "${pacman_conf_dest}.bak"
+        fi
+
+        action_msg "Replacing pacman.conf"
+        sudo cp "$pacman_conf_src" "$pacman_conf_dest"
+    fi
+fi
 
 info_msg "Checking mkinitcpio.conf"
-check_system_file "$bootstrap_dir/sys/mkinitcpio.conf" "/etc/mkinitcpio.conf"
+mkinitcpio_conf_src="$bootstrap_dir/sys/mkinitcpio.conf"
+mkinitcpio_conf_dest="/etc/mkinitcpio.conf"
+
+if ! [ -f "$mkinitcpio_conf_dest" ]; then
+    action_msg "Copying missing mkinitcpio.conf"
+    sudo cp "$mkinitcpio_conf_src" "$mkinitcpio_conf_dest"
+
+    action_msg "Regenerating initramfs"
+    sudo mkinitcpio -P
+elif ! cmp -s "$mkinitcpio_conf_src" "$mkinitcpio_conf_dest"; then
+    prompt "Replace current mkinitcpio.conf? [Y/n]"
+
+    if ! [[ $prompt_result == [nN] ]]; then
+        prompt "Backup current mkinitcpio.conf? [y/N]"
+
+        if [[ $prompt_result == [yY] ]]; then
+            action_msg "Moving $mkinitcpio_conf_dest to ${dest}.bak"
+            sudo mv "$mkinitcpio_conf_dest" "${dest}.bak"
+        fi
+
+        action_msg "Replacing mkinitcpio.conf"
+        sudo cp "$mkinitcpio_conf_src" "$mkinitcpio_conf_dest"
+
+        action_msg "Regenerating initramfs"
+        sudo mkinitcpio -P
+    fi
+fi
 
 info_msg "Checking vconsole.conf"
 vconsole_dest="/etc/vconsole.conf"
@@ -85,11 +105,8 @@ done
 action_msg "Initializing yadm submodules"
 yadm submodule update --recursive --init
 
-action_msg "Updating pacman packages"
-sudo pacman -Syu
-
 action_msg "Installing needed pacman packages"
-sudo pacman --needed -S $(cat "$bootstrap_dir/pacman_pkglist")
+sudo pacman --needed -Syu $(cat "$bootstrap_dir/pacman_pkglist")
 
 info_msg "Checking default shell"
 if ! [ -n "$($SHELL -c 'echo $ZSH_VERSION')" ]; then
