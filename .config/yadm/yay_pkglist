@@ -9,6 +9,7 @@ pipes.sh
 pyenv-virtualenv
 qt5-styleplugins
 qt6gtk2
+rofi-power-menu
 rmtrash
 ttf-ms-win11-auto
 xdg-desktop-portal-hyprland-git
