@@ -148,6 +148,7 @@ action_msg "Enabling systemd services"
 sudo systemctl enable NetworkManager
 sudo systemctl enable thermald
 sudo systemctl enable bluetooth
+systemctl --user enable pulseaudio
 
 action_msg "Building bat cache"
 bat cache --build
