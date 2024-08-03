@@ -1,0 +1,6 @@
+monitor=eDP-1, 1920x1080, auto, 1.15
+monitor=HDMI-A-1, 1920x1080, auto-left, 1.1
+
+debug {
+	disable_scale_checks = true
+}
