@@ -6,6 +6,7 @@ mkinitcpio-colors-git
 librewolf-bin
 peaclock
 pipes.sh
+pyenv-virtualenv
 qt5-styleplugins
 qt6gtk2
 rmtrash
