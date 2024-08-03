@@ -13,7 +13,6 @@ dex
 discord
 dosfstools
 dunst
-efibootmgr
 egl-wayland
 exa
 fd
@@ -22,7 +21,6 @@ fzf
 gimp
 git
 grim
-grub
 gvfs
 hyprcursor
 hyprland
@@ -30,7 +28,9 @@ hyprlock
 hyprpaper
 imagemagick
 intel-ucode
+jq
 kitty
+lib32-nvidia-utils
 libgsf
 libreoffice-still
 linux
@@ -55,7 +55,6 @@ nvidia-dkms
 nvidia-settings
 nvidia-utils
 obsidian
-os-prober
 pavucontrol
 pcmanfm-qt
 perl-file-homedir
@@ -92,9 +91,7 @@ waybar
 wget
 wl-clipboard
 wtype
-xdg-desktop-portal-hyprland
 xdg-user-dirs
-xdotool
 yadm
 zathura
 zathura-pdf-mupdf

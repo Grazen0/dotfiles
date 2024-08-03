@@ -2,21 +2,11 @@
 
 set -eu
 
-function info_msg {
-    echo -e "\e[1;36m>> $1\e[0m"
-}
-
-function action_msg {
-    echo -e "\e[1;35m>> $1\e[0m"
-}
-
-function error_msg {
-    echo -e "\e[1;41m>> $1\e[0m"
-}
-
 cd "$HOME"
 
 bootstrap_dir=$(dirname "${BASH_SOURCE[0]}")
+
+source "$bootstrap_dir/common_utils"
 
 info_msg "============================"
 info_msg "       YADM BOOTSTRAP       "
@@ -29,6 +19,70 @@ if ! command -v sudo &>/dev/null; then
     action_msg "You must install the sudo package before running this script"
     exit 1
 fi
+
+function check_system_file {
+    local src="$1"
+    local dest="$2"
+    local display_name=$(basename "$dest")
+
+    if ! [ -f "$dest" ]; then
+        action_msg "Copying missing $display_name"
+        sudo cp "$src" "$dest"
+    elif ! cmp -s "$src" "$dest"; then
+        prompt "Replace current $display_name? [Y/n]"
+
+        if ! [[ $prompt_result == [nN] ]]; then
+            prompt "Backup current $display_name? [y/N]"
+
+            if [[ $prompt_result == [yY] ]]; then
+                action_msg "Moving $dest to ${dest}.bak"
+                sudo mv "$dest" "${dest}.bak"
+            fi
+
+            action_msg "Replacing $display_name"
+            sudo cp "$src" "$dest"
+        fi
+    fi
+}
+
+info_msg "Checking pacman.conf"
+check_system_file "$bootstrap_dir/sys/pacman.conf" "/etc/pacman.conf"
+
+info_msg "Checking mkinitcpio.conf"
+check_system_file "$bootstrap_dir/sys/mkinitcpio.conf" "/etc/mkinitcpio.conf"
+
+info_msg "Checking vconsole.conf"
+vconsole_dest="/etc/vconsole.conf"
+
+if ! [ -f "$vconsole_dest" ]; then
+    prompt "Console font: [ter-v16b]"
+    vconsole_font=${prompt_result:-"ter-v16b"}
+
+    prompt "Console keymap: [us]"
+    vconsole_keymap=${prompt_result:-"us"}
+
+    action_msg "Adding vconsole.conf with FONT=$vconsole_font and KEYMAP=$vconsole_keymap"
+
+    vconsole=$(cat "$bootstrap_dir/sys/vconsole.conf")
+    vconsole=${vconsole//"%font%"/"$vconsole_font"}
+    vconsole=${vconsole//"%keymap%"/"$vconsole_keymap"}
+    echo "$vconsole" | sudo tee "$vconsole_dest" > /dev/null
+fi
+
+exit
+
+info_msg "Checking modprobe.d entries"
+modprobe_src="$bootstrap_dir/sys/modprobe.d"
+modprobe_dest="/etc/modprobe.d"
+
+for full_path in "$modprobe_src"/*; do
+    filename=$(basename "$full_path")
+
+    if ! [ -f "$modprobe_dest/$filename" ]; then
+        action_msg "Adding $filename"
+        sudo cp "$full_path" "$modprobe_dest/$filename"
+    fi
+done
 
 action_msg "Initializing yadm submodules"
 yadm submodule update --recursive --init
@@ -51,7 +105,6 @@ sudo pkgfile -u
 info_msg "Checking for Yay"
 if ! command -v yay &>/dev/null; then
     action_msg "Installing Yay"
-    sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay-bin.git
     cd yay-bin
     makepkg -si
