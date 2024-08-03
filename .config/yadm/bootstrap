@@ -51,13 +51,12 @@ fi
 info_msg "Checking mkinitcpio.conf"
 mkinitcpio_conf_src="$bootstrap_dir/sys/mkinitcpio.conf"
 mkinitcpio_conf_dest="/etc/mkinitcpio.conf"
+run_mkinitcpio=false
 
 if ! [ -f "$mkinitcpio_conf_dest" ]; then
     action_msg "Copying missing mkinitcpio.conf"
     sudo cp "$mkinitcpio_conf_src" "$mkinitcpio_conf_dest"
-
-    action_msg "Regenerating initramfs"
-    sudo mkinitcpio -P
+    run_mkinitcpio=true
 elif ! cmp -s "$mkinitcpio_conf_src" "$mkinitcpio_conf_dest"; then
     prompt "Replace current mkinitcpio.conf? [Y/n]"
 
@@ -71,9 +70,7 @@ elif ! cmp -s "$mkinitcpio_conf_src" "$mkinitcpio_conf_dest"; then
 
         action_msg "Replacing mkinitcpio.conf"
         sudo cp "$mkinitcpio_conf_src" "$mkinitcpio_conf_dest"
-
-        action_msg "Regenerating initramfs"
-        sudo mkinitcpio -P
+        run_mkinitcpio=true
     fi
 fi
 
@@ -114,6 +111,7 @@ yadm submodule update --recursive --init
 action_msg "Installing needed pacman packages"
 sudo pacman --needed -Syu $(cat "$bootstrap_dir/pacman_pkglist")
 
+
 info_msg "Checking default shell"
 if ! [ -n "$($SHELL -c 'echo $ZSH_VERSION')" ]; then
     action_msg "Setting Zsh as the default shell"
@@ -144,7 +142,13 @@ yay -Sy
 action_msg "Installing needed Yay packages"
 yay --needed -S $(cat $bootstrap_dir/yay_pkglist)
 
+if [ "$run_mkinitcpio" = true ]; then
+    action_msg "Regenerating initramfs"
+    sudo mkinitcpio -P
+fi
+
 action_msg "Enabling systemd services"
+sudo systemctl enable NetworkManager
 sudo systemctl enable thermald
 sudo systemctl enable bluetooth
 
