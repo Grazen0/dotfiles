@@ -12,6 +12,12 @@ info_msg "       YADM BOOTSTRAP       "
 info_msg "============================"
 info_msg ""
 
+
+if [ "$EUID" -eq 0 ]; then
+    error_msg "Don't run this script as root"
+    exit 1
+fi
+
 info_msg "Checking for sudo command"
 
 if ! command -v sudo &>/dev/null; then
