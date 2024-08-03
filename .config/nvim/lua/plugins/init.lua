@@ -27,7 +27,7 @@ return {
 			require('auto-session').setup(opts)
 
 			vim.o.sessionoptions =
-				'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+			'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 
 			vim.keymap.set(
 				'n',
@@ -153,10 +153,11 @@ return {
 			'MarkdownPreview',
 			'MarkdownPreviewStop',
 		},
-		ft = { 'markdown' },
-		build = function()
-			vim.fn['mkdp#util#install']()
+		build = 'cd app && pnpm install',
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
 		end,
+		ft = { 'markdown' },
 	},
 	{
 		'numToStr/Comment.nvim',
