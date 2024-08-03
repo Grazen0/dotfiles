@@ -18,6 +18,7 @@ exa
 fd
 ffmpegthumbnailer
 fzf
+gcc
 gimp
 git
 go
@@ -39,6 +40,7 @@ linux-firmware
 linux-headers
 lua51
 luarocks
+make
 man-db
 man-pages
 mpv
