@@ -19,7 +19,7 @@ export PRETTIERD_DEFAULT_CONFIG="$XDG_CONFIG_HOME/prettierd.json"
 eval "$(fnm env --use-on-cd)" > /dev/null
 
 # pnpm
-export PNPM_HOME="/home/jdgt/.local/share/pnpm"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # Pyenv
