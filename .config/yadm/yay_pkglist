@@ -3,14 +3,11 @@ fnm
 kanagawa-gtk-theme-git
 kanagawa-icon-theme-git
 mkinitcpio-colors-git
-librewolf-bin
-peaclock
-pipes.sh
 pyenv-virtualenv
 qt5-styleplugins
 qt6gtk2
 rofi-power-menu
 rmtrash
-ttf-ms-win11-auto
+vesktop-bin
 xdg-desktop-portal-hyprland-git
-zoom
+zen-browser-bin

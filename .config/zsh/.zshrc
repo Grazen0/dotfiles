@@ -38,6 +38,9 @@ export BAT_THEME="kanagawa"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
+# broot
+source $XDG_CONFIG_HOME/broot/launcher/bash/br
+
 
 # ================================
 # Aliases
@@ -186,3 +189,4 @@ bindkey -M vicmd cs change-surround
 bindkey -M vicmd ds delete-surround
 bindkey -M vicmd ys add-surround
 bindkey -M visual S add-surround
+

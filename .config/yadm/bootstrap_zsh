@@ -8,7 +8,7 @@ source "$bootstrap_dir/common_utils"
 info_msg "Sourcing .zshrc"
 source "$ZDOTDIR/.zshrc"
 
-NODE_VERSION="v22.5.1"
+NODE_VERSION="v23.1.0"
 
 info_msg "Checking for node $NODE_VERSION"
 if ! [[ $(fnm ls | grep -w $NODE_VERSION) ]]; then
@@ -28,7 +28,7 @@ if ! command -v pnpm &>/dev/null; then
     corepack install --global pnpm@latest
 fi
 
-PYTHON_VERSION="3.12.4"
+PYTHON_VERSION="3.13.0"
 
 info_msg "Checking for Python $PYTHON_VERSION"
 if ! pyenv versions | grep "$PYTHON_VERSION" &>/dev/null; then
