@@ -104,7 +104,6 @@ source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
-source "/usr/share/doc/pkgfile/command-not-found.zsh"
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=default
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=default
 
@@ -164,7 +163,8 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 # Press v to edit command in editor
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+bindkey -M viins ^v edit-command-line
+bindkey -M vicmd ^v edit-command-line
 
 # Text objects
 autoload -Uz select-bracketed select-quoted

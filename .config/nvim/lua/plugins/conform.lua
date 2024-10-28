@@ -1,4 +1,4 @@
-format_opts = {
+local format_opts = {
 	timeout_ms = 500,
 	lsp_format = false,
 }
@@ -9,18 +9,16 @@ return {
 		format_on_save = format_opts,
 		formatters_by_ft = {
 			html = { { 'prettierd', 'prettier' } },
-			javascriptreact = { { 'prettierd', 'prettier' } },
-			typescriptreact = { { 'prettierd', 'prettier' } },
-			javascript = { { 'prettierd', 'prettier' } },
-			typescript = { { 'prettierd', 'prettier' } },
-			graphql = { { 'prettierd', 'prettier' } },
-			json = { { 'prettierd', 'prettier' } },
-			css = { { 'prettierd', 'prettier' } },
+			javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+			typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+			javascript = { 'prettierd', 'prettier', stop_after_first = true },
+			typescript = { 'prettierd', 'prettier', stop_after_first = true },
+			graphql = { 'prettierd', 'prettier', stop_after_first = true },
+			json = { 'prettierd', 'prettier', stop_after_first = true },
+			css = { 'prettierd', 'prettier', stop_after_first = true },
 			python = { 'isort', 'black' },
 			lua = { 'stylua' },
 			rust = { 'rustfmt' },
-			tex = { 'latexindent' },
-			latex = { 'latexindent' },
 			c = { 'clang-format' },
 			cpp = { 'clang-format' },
 			yaml = { 'prettierd' },

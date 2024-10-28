@@ -11,16 +11,13 @@
 	"modules-left": [
 		"custom/sysmenu",
 		"hyprland/workspaces"
-		// "custom/media"
 	],
 	"modules-center": [
 		"hyprland/window"
 	],
 	"modules-right": [
-		// "mpd",
 		"hyprland/submap",
 		"hyprland/language",
-		// "wireplumber",
 		"pulseaudio",
 		"network",
 		"temperature",
@@ -40,7 +37,7 @@
 		"format-icons": {
 			"1": "",
 			"2": "",
-			"6": "",
+			"7": "",
 			"default": ""
 		}
 	},
@@ -50,32 +47,6 @@
 		"icon-size": 20,
 		"separate-outputs": true
 	},
-	// "mpd": {
-	// 	"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-	// 	"format-disconnected": "Disconnected ",
-	// 	"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-	// 	"unknown-tag": "N/A",
-	// 	"interval": 5,
-	// 	"consume-icons": {
-	// 		"on": " "
-	// 	},
-	// 	"random-icons": {
-	// 		"off": "<span color=\"#f53c3c\"></span> ",
-	// 		"on": " "
-	// 	},
-	// 	"repeat-icons": {
-	// 		"on": " "
-	// 	},
-	// 	"single-icons": {
-	// 		"on": "1 "
-	// 	},
-	// 	"state-icons": {
-	// 		"paused": "",
-	// 		"playing": ""
-	// 	},
-	// 	"tooltip-format": "MPD (connected)",
-	// 	"tooltip-format-disconnected": "MPD (disconnected)"
-	// },
 	"hyprland/submap": {
 		"format": " {}",
 		"on-click": "hyprctl dispatch submap reset"
@@ -145,18 +116,6 @@
 		},
 		"on-click": "pavucontrol"
 	},
-	// "custom/media": {
-	// 	"format": "{icon} {}",
-	// 	"return-type": "json",
-	// 	"max-length": 40,
-	// 	"format-icons": {
-	// 		"spotify": "",
-	// 		"default": "🎜"
-	// 	},
-	// 	"escape": true,
-	// 	"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-	// 	// "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-	// },
 	"custom/power": {
 		"format": "⏻ ",
 		"tooltip": false,

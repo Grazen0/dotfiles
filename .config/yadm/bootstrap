@@ -118,9 +118,6 @@ if ! [ -n "$($SHELL -c 'echo $ZSH_VERSION')" ]; then
     chsh -s $(which zsh)
 fi
 
-action_msg "Syncing pkgfile database"
-sudo pkgfile -u
-
 info_msg "Checking for Yay"
 if ! command -v yay &>/dev/null; then
     action_msg "Installing Yay"
